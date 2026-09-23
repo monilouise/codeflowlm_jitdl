@@ -2,7 +2,7 @@
 
 ## Replication steps
 
-### CodeFlowLM
+### CodeFlowLM (RQ 1)
 
 Hardware requirements: A100 or other GPU with at least 24GB OF VRAM for CodeT5+ with batch size = 16. This notebook was tested with A100 GPU on Google Colab environment. So, the instructions in this replication package are well suited to a Colab env.
 
@@ -16,7 +16,7 @@ The following random seeds were used to run the experiments repetitions: [33 (de
 
 [continual_jitsdp/PredictionTimesTest.ipynb](continual_jitsdp/PredictionTimesTest.ipynb): tests CodeFlowLM inference time for a single prediction with both base learners (CodeT5+ and UniXCoder).
 
-### Defect Localization
+### Defect Localization (RQs 2 and 3)
 
 - [jit-dl-llms/JIT-DL-GPT-5.ipynb](jit-dl-llms/JIT-DL-GPT-5.ipynb): Quantitative and qualitative experiments with GPT-5, the LLM with the best observed metrics in our experiments.
 - response-gpt-5_exec-*.pkl files: Different runs for the same LLM
