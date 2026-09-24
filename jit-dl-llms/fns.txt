@@ -1,0 +1,844 @@
+"private static final Comparator<Map.Entry<String, Integer>> ALTERNATIVES_ORDERING = new Comparator<Map.Entry<String, Integer>>() {"
+org.apache.parquet.column.statistics.Statistics stats = org.apache.parquet.column.statistics.Statistics.createStats(type);
+"AuxiliaryCache<K, V> auxCache = (AuxiliaryCache<K, V>)compositeCacheManager.getAuxiliaryCache(auxName, regName);"
+"Set<Entry<String, Integer>> displayNames = cal.getDisplayNames(field, Calendar.ALL_STYLES, locale).entrySet();"
+"LOG.warn(""Ignoring statistics because created_by did not contain a semver (see PARQUET-251): "" + createdBy);"
+public CompressorInputStream createCompressorInputStream(final InputStream in) throws CompressorException {
+"LOG.warn(""Ignoring statistics because created_by could not be parsed (see PARQUET-251): "" + createdBy, e);"
+"TreeSet<Map.Entry<String, Integer>> sort = new TreeSet<Map.Entry<String, Integer>>(ALTERNATIVES_ORDERING);"
+"LOG.warn(""Ignoring statistics because created_by could not be parsed (see PARQUET-251): "" + createdBy, e);"
+"LOG.warn(""Ignoring statistics because created_by could not be parsed (see PARQUET-251): "" + createdBy, e);"
+Vector2D p = thisPlane.toSubSpace((Point<Euclidean3D>) inter.toSpace((Point<Euclidean1D>) Vector1D.ZERO));
+"setBarycenter((Point<Euclidean3D>) new Cartesian3D(1.0 / (4 * getSize()), (Cartesian3D) getBarycenter()));"
+"return String.format(""min: %s, max: %s, num_nulls: %d"", minAsString(), maxAsString(), this.getNumNulls());"
+Vector2D q = thisPlane.toSubSpace((Point<Euclidean3D>) inter.toSpace((Point<Euclidean1D>) Vector1D.ONE));
+"throws DimensionMismatchException, NullArgumentException, NoDataException, NonMonotonicSequenceException"
+"this.fieldProjectionFilter = Preconditions.checkNotNull(fieldProjectionFilter, ""fieldProjectionFilter"");"
+"setBarycenter((Point<Euclidean3D>) new Cartesian3D(1.0, (Cartesian3D) getBarycenter(), scaled, facetB));"
+"private ThriftSchemaConvertVisitor(FieldProjectionFilter fieldProjectionFilter, boolean doProjection) {"
+contentSize.addAndGet((int) ((Math.ceil((value.len + IndexedDisk.HEADER_SIZE_BYTES) / 1024.0)) * -1));
+contentSize.addAndGet((int) ((Math.ceil((value.len + IndexedDisk.HEADER_SIZE_BYTES) / 1024.0)) * -1));
+contentSize.addAndGet((int) ((Math.ceil((value.len + IndexedDisk.HEADER_SIZE_BYTES) / 1024.0)) * -1));
+if (columnType != PrimitiveTypeName.BINARY && columnType != PrimitiveTypeName.FIXED_LEN_BYTE_ARRAY) {
+"LOG.info(""Ignoring statistics because created_by is null or empty! See PARQUET-251 and PARQUET-297"");"
+"return new URLInfo(true, getResponseContentLength(method), getLastModified(method), bodyCharset);"
+"protected void mergeConfigurations(ModuleRevisionId sourceMrid, Configuration[] configurations) {"
+"public BicubicSplineInterpolatingFunction interpolate( final double[] xval, final double[] yval,"
+static final class RangeMetadataFilter extends MetadataFilter implements OffsetMetadataFilter {
+static final class RangeMetadataFilter extends MetadataFilter implements OffsetMetadataFilter {
+"public static boolean shouldIgnoreStatistics(String createdBy, PrimitiveTypeName columnType) {"
+"private static final SemanticVersion PARQUET_251_FIXED_VERSION = new SemanticVersion(1, 8, 0);"
+"ConvertedField converted = struct.accept(new ThriftSchemaConvertVisitor(filter, true), state);"
+"if (LZMAUtils.matches(signature, signatureLength) && LZMAUtils.isLZMACompressionAvailable()) {"
+".accept(new ThriftSchemaConvertVisitor(FieldProjectionFilter.ALL_COLUMNS, false), childState);"
+"public CompressorStreamFactory(final boolean decompressUntilEOF, final int memoryLimitInKb) {"
+"tmpPreds[numPreds] = new ComparablePredicate(PRED_LABELS[pid], activeOutcomes, activeParams);"
+"new org.apache.commons.math3.geometry.euclidean.twod.Line(q, p, tolerance).wholeHyperplane();"
+"MessageType messageType = ThriftSchemaConvertVisitor.convert(struct, fieldProjectionFilter);"
+"private EnclosingBall<S, P> moveToFrontBall(final List<P> extreme, final List<P> support) {"
+"Iterator<int[]> combinationsIterator = CombinatoricsUtils.combinationsIterator(n + m, n);"
+"Iterator<int[]> combinationsIterator = CombinatoricsUtils.combinationsIterator(n + m, n);"
+"CodecFactory codecFactory = new CodecFactory(conf, encodingProps.getPageSizeThreshold());"
+final double global = hyperplane.getOffset(((LimitAngle) getHyperplane()).getLocation());
+"return getRemainingRegion().side(new OrientedPoint(x, direct, thisLine.getTolerance()));"
+"if (XZUtils.matches(signature, signatureLength) && XZUtils.isXZCompressionAvailable()) {"
+} else if (normalizedPoint > lower + tolerance && normalizedPoint < upper - tolerance) {
+"protected <C extends Collection<V>> AbstractMultiValuedMap(final Map<K, ? super C> map,"
+"public int compare(Map.Entry<String, Integer> left, Map.Entry<String, Integer> right) {"
+"protected <C extends Collection<V>> AbstractMultiValuedMap(final Map<K, ? super C> map,"
+"new ThriftSchemaConvertVisitor(new KeepOnlyFirstPrimitiveFilter(), true), childState);"
+BackupResourceDownloader backupDownloader = new BackupResourceDownloader(downloader);
+"public LZMACompressorInputStream(final InputStream inputStream, int memoryLimitInKb)"
+contentSize.addAndGet((int) ((Math.ceil(value.length * blockSize / 1024.0)) * -1));
+"LineNumberReader reader = new LineNumberReader(new InputStreamReader(in, ""UTF-8""));"
+"LineNumberReader reader = new LineNumberReader(new InputStreamReader(in, ""UTF-8""));"
+contentSize.addAndGet((int) ((Math.ceil(value.length * blockSize / 1024.0)) * -1));
+final double modifiedSuccessRatio = mean + (1.0 / (2 * numberOfTrials)) * zSquared;
+"private ColumnChunkPageWriter(ColumnDescriptor path, BytesCompressor compressor) {"
+"humanReadable(perValue), stats == null ? """" : String.valueOf(stats.getNumNulls()),"
+"Message.verbose(""problem while listing resources in "" + root + "" with "" + rep, e);"
+"public LZMACompressorInputStream(final InputStream inputStream, int memoryLimitKb)"
+public static class IOExceptionWrappingMemoryLimitException extends IOException {
+public ZCompressorInputStream(final InputStream inputStream) throws IOException {
+"public ZCompressorInputStream(final InputStream inputStream, int memoryLimitInKb)"
+"protected void initializeTables(final int maxCodeSize, final int memoryLimitInKb)"
+for (final Iterator entIter = extras.entrySet().iterator(); entIter.hasNext();) {
+rootContext = Evaluator.NULL_DATA_MODEL.equals(evaluator.getSupportedDatamodel())
+"System.err.println(""Compressed "" + PARAMS.length + "" parameters to "" + numPreds);"
+"System.err.println(""Compressed "" + PARAMS.length + "" parameters to "" + numPreds);"
+File cacheFile = settings.getResolutionCacheManager().getResolvedIvyFileInCache(
+"throw new CompressorMemoryLimitException(""exceeded calculated memory limit"", e);"
+"public P selectFarthest(final List<P> points, final EnclosingBall<S, P> ball) {"
+"public SemanticVersion(int major, int minor, int patch, boolean isPrerelease) {"
+"private double minor(final double[] c1, final double[] c2, final double[] c3) {"
+"private void printDependencies(List/* <IvyNode> */dependencyList, int indent) {"
+"Collection blacklisted, VersionMatcher versionMatcher, boolean dynamicCaller) {"
+"private double minor(final double[] c1, final double[] c2, final double[] c3) {"
+"Collection blacklisted, VersionMatcher versionMatcher, boolean dynamicCaller) {"
+"private static boolean isElementType(Type repeatedType, Schema elementSchema) {"
+"private static void appendDisplayNames(Calendar cal, Locale locale, int field,"
+import org.apache.commons.compress.compressors.CompressorMemoryLimitException;
+"mergeConfigurations(parent.getModuleRevisionId(), parent.getConfigurations());"
+"private final Map<String, Integer> lKeyValues = new HashMap<String,Integer>();"
+import org.apache.commons.math3.analysis.polynomials.PolynomialSplineFunction;
+for (Iterator iter = parentPomProps.entrySet().iterator(); iter.hasNext();) {
+"return (MethodUtils.getAccessibleMethod(clazz, descriptor.getWriteMethod()));"
+"Document pomDomDoc = XMLHelper.parseToDom(stream, res, new EntityResolver() {"
+"parent = parseOtherIvyFile(parentOrganisation, parentModule, parentRevision);"
+"if (!isCheckmodified(dd, mrid, options) && !isChanging(dd, mrid, options)) {"
+} catch (ZCompressorInputStream.IOExceptionWrappingMemoryLimitException e) {
+"stats.setMinMaxFromBytes(formatStats.min.array(), formatStats.max.array());"
+"stats.setMinMaxFromBytes(formatStats.min.array(), formatStats.max.array());"
+private final ArrayList<ThriftField> fields = new ArrayList<ThriftField>();
+"packagingManager.unpackArtifact(artifact, adr.getLocalFile(), archiveFile);"
+"return ClassUtils.isAssignable(parameterTypes, methodParameterTypes, true);"
+"? new CompositeCache<K, V>( parseCompositeCacheAttributes( props, regName,"
+"File artFile = getArchiveFileInCache(transformedArtifact, origin, false);"
+"nbrBytesCopied += in.read(b, off + nbrBytesCopied, len - nbrBytesCopied);"
+ComparablePredicate[] tmpPreds = new ComparablePredicate[PARAMS.length];
+final int minimumLength = AkimaSplineInterpolator.MINIMUM_NUMBER_POINTS;
+import org.apache.parquet.SemanticVersion.SemanticVersionParseException;
+"appendDisplayNames(definingCalendar, locale, field, regex, lKeyValues);"
+"final double[] values = MathArrays.unique(MathArrays.concatenate(x,y));"
+"private static void copy(FSDataInputStream from, FSDataOutputStream to,"
+"if (values.put(symbol.toLowerCase(locale), entry.getValue()) == null) {"
+"protected ModuleDescriptor parseOtherIvyFile(String parentOrganisation,"
+import static org.apache.giraph.conf.GiraphConstants.COMPUTATION_CLASS;
+"LOG.info(""Ignoring statistics because this file was created prior to """
+"tunnelHandshake(this.getPassiveHost(), this.getPassivePort(), is, os);"
+"String location = attributes.getValue(""location"") != null ? attributes"
+DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+"DICTIONARY_PAGE_SIZE, ParquetProperties.DEFAULT_DICTIONARY_PAGE_SIZE);"
+if ( xval == null || yval == null || fval == null || fval[0] == null )
+private final AtomicReference<ConfigurationInterpolator> interpolator;
+"DICTIONARY_PAGE_SIZE, ParquetProperties.DEFAULT_DICTIONARY_PAGE_SIZE);"
+final Vector1D x = thisLine.toSubSpace((Point<Euclidean2D>) crossing);
+Int2ObjectMap<WorkerInfo> workersMap = new Int2ObjectOpenHashMap<>();
+if (validOctets < IPV6_MAX_HEX_GROUPS && !containsCompressedZeroes) {
+AkimaSplineInterpolator interpolator = new AkimaSplineInterpolator();
+Map parentPomProps = PomModuleDescriptorBuilder.extractPomProperties(
+import org.apache.commons.math4.distribution.UniformRealDistribution;
+ArtifactOrigin origin = getSavedArtifactOrigin(transformedArtifact);
+"compositeCacheManager.addAuxiliaryCache(auxName, regName, auxCache);"
+import org.apache.commons.math3.exception.InsufficientDataException;
+"ModuleRevisionId.newInstance(parentMrid, Ivy.getWorkingRevision()));"
+this.collectionFactory = new InstantiateFactory<C>(collectionClazz);
+final double factor = 1.0 / (1 + (1.0 / numberOfTrials) * zSquared);
+import org.apache.parquet.format.converter.ParquetMetadataConverter;
+"this(w, writeSupport, schema, extraMetaData, blockSize, compressor,"
+for (int i = currentPositionInInputs; i < dataInputs.size(); i++) {
+"ModuleId expected = new ModuleId(parentOrganisation, parentModule);"
+"dependencies.put(moduleRevisionId, new ArrayList/* <IvyNode> */());"
+"Message.warn(""impossible to load parent for "" + descriptorURL + ""."""
+"this(w, writeSupport, schema, extraMetaData, blockSize, compressor,"
+final boolean isUnion = isUnion(structType.getStructOrUnionType());
+"IndexedDiskCache<K, V> cache = new IndexedDiskCache<K, V>( idca );"
+"PageHeader pageHeader, FSDataInputStream fin) throws IOException {"
+List dependencyList = (List) dependencies.get(dependency.getId());
+public CompressorStreamFactory(final boolean decompressUntilEOF) {
+"PageHeader pageHeader, FSDataInputStream fin) throws IOException {"
+"origin, mrid.getExtraAttributes(), artifact.getExtraAttributes());"
+"md.addConfiguration(new Configuration(configuration, sourceMrid));"
+final Cartesian3D facetB = plane.toSpace(polygon.getBarycenter());
+"public BicubicSplineInterpolatingFunction(double[] x, double[] y,"
+"final long curD = integralKolmogorovSmirnovStatistic(nSet, mSet);"
+"addChildConfiguration(ccResult, srcDecl.get(i), builders.get(i));"
+"final long curD = integralKolmogorovSmirnovStatistic(nSet, mSet);"
+private final Factory<? extends Collection<V>> collectionFactory;
+"ModuleDescriptor moduleDescriptor, ModuleRevisionId revisionId) {"
+import org.apache.parquet.schema.PrimitiveType.PrimitiveTypeName;
+"registerAggregator(CONVERGED, BooleanOverwriteAggregator.class);"
+"Message.debug(""Trying to parse included ivy file :"" + location);"
+import org.apache.commons.math3.exception.NullArgumentException;
+"registerAggregator(CONVERGED, BooleanOverwriteAggregator.class);"
+"private EnclosingBall<S, P> pivotingBall(final List<P> points) {"
+import org.apache.giraph.aggregators.BooleanOverwriteAggregator;
+"writeValue(schema.getType(0), avroSchema.getElementType(), elt);"
+public IOExceptionWrappingMemoryLimitException(String message) {
+"codecFactory.getCompressor(codec, props.getPageSizeThreshold()),"
+"Message.verbose(mrid + "" has changed: deleting old artifacts"");"
+SemanticVersion semver = SemanticVersion.parse(version.semver);
+if ( xval.length == 0 || yval.length == 0 || fval.length == 0 )
+private ArcsSet createSplitPart(final BSPTree<Sphere1D> tree) {
+tiedXYPairs += consecutiveXYTies * (consecutiveXYTies - 1) / 2;
+"vA.getNormSq(), vB.getNormSq(), vC.getNormSq(), vD.getNormSq()"
+"writeValue(type.getType(0), schema.getElementType(), element);"
+"BlockDiskCache<K, V> cache = new BlockDiskCache<K, V>( idca );"
+if (x < xval[0] || x > xval[xval.length - 1] || y < yval[0] ||
+"vA.getNormSq(), vB.getNormSq(), vC.getNormSq(), vD.getNormSq()"
+result = (String) ivyModuleDescriptor.getExtraInfo().get(key);
+import org.apache.parquet.VersionParser.VersionParseException;
+"needReset =  needReset || state.reset(eventT, eventYComplete);"
+if (tree.getCut() == null && !(Boolean) tree.getAttribute()) {
+"public int start(String zkDir, final ZookeeperConfig config) {"
+"final Properties properties, final CompositeCache<K, V> cache)"
+"public double exactP(double[] x, double[] y, boolean strict) {"
+"public double exactP(double[] x, double[] y, boolean strict) {"
+"Message.debug(""Trying to load included ivy file from cache"");"
+"setBarycenter((Point<Euclidean3D>) new Cartesian3D(0, 0, 0));"
+"root = (nextsep > 2) ? path.substring(0, nextsep + 1) : path;"
+finalizedOutputStream.writeInt(chosenWorkerInfo.getTaskId());
+"EnclosingBall<S, P> ball = moveToFrontBall(extreme, support);"
+private final FieldsPath currentFieldPath = new FieldsPath();
+return getClass() == o.getClass() && s.equals(((Atom) o).s);
+tiedYPairs += consecutiveYTies * (consecutiveYTies - 1) / 2;
+private Object getSrcData(final PathResolver pathResolver) {
+tiedXPairs += consecutiveXTies * (consecutiveXTies - 1) / 2;
+""" but memoryLimitInKb only allows ""+(memoryLimitInKb*1024));"
+"payload = eval.cloneData(eval.eval(ctx, content.getExpr()));"
+private static Properties copyProperties(Properties input) {
+"return new SemanticVersion(major, minor, patch, prerelease);"
+private final AtomicLong numberOfCalls = new AtomicLong(-1);
+"mergeConfigurations(sourceMrid, parent.getConfigurations());"
+import org.apache.commons.math3.geometry.partitioning.Side;
+ModuleRevisionId sourceMrid = parent.getModuleRevisionId();
+import org.apache.commons.math3.geometry.partitioning.Side;
+"result = eval.cloneData(eval.eval(ctx, content.getExpr()));"
+int bytesSkipped = currentInput.skipBytes(bytesLeftToSkip);
+"public MemoryLimitException(String message, Exception e) {"
+"public MemoryLimitException(String message, Exception e) {"
+"thread.setName(""ReactiveJMapHistoDumperSupervisorThread"");"
+"setBarycenter((Point<Euclidean2D>) new Cartesian2D(0, 0));"
+f.length < minimumLength || f[0].length < minimumLength) {
+"ImmutableNode.Builder parent, ImmutableNode.Builder child,"
+"(1.0 / (4 * FastMath.pow(numberOfTrials, 2)) * zSquared));"
+"""destination = "" + writeFuture.channel().remoteAddress() +"
+if (entry.getValue().getLeft() > minBufferSizeToOffload) {
+"public EnclosingBall<S, P> enclose(final List<P> points) {"
+"extraMetaData, blockSize, compressor, validating, props);"
+return (FastMath.PI * FastMath.PI) / 6.0 * (beta * beta);
+String temp = ArchiveUtils.toAsciiString(nameBuf).trim();
+"ctx.setLocal(item, Array.get(arrayObject, currentIndex));"
+md = parseOtherIvyFileOnFileSystem(parentUrl.toString());
+"stats == null ? """" : String.valueOf(stats.getNumNulls()),"
+Artifact transformedArtifact = NameSpaceHelper.transform(
+public Side side(final Hyperplane<Sphere1D> hyperplane) {
+"throws DimensionMismatchException, NullArgumentException,"
+public Side side(final Hyperplane<Sphere2D> hyperplane) {
+"extraMetaData, blockSize, compressor, validating, props);"
+"throw new DimensionMismatchException(yLen, f[0].length);"
+"final long d = integralKolmogorovSmirnovStatistic(x, y);"
+"String parentRevision = attributes.getValue(""revision"");"
+public void setDefaultAuxValues(String defaultAuxValues)
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
+"final long d = integralKolmogorovSmirnovStatistic(x, y);"
+"String value, boolean trim, Map<String, String> attrmap)"
+import static org.apache.ivy.core.IvyContext.getContext;
+final BSPTree<Sphere1D> plus  = new BSPTree<Sphere1D>();
+if (organization != null && organization.length() > 0) {
+if (organization != null && organization.length() > 0) {
+for (ConfigurationDeclaration cd : overrideDeclarations)
+new SimpleContext() : evaluator.newContext(rootContext);
+final BSPTree<Sphere1D> minus = new BSPTree<Sphere1D>();
+"return new ZCompressorInputStream(in, memoryLimitInKb);"
+ParsedVersion version = VersionParser.parse(createdBy);
+private LocalVariableTable local_variable_table = null;
+"public XZCompressorInputStream(InputStream inputStream,"
+.addAll(partitionStore.getCandidateBuffersToOffload());
+FSDataInputStream in = fileSystem.open(file.getPath());
+"super(moduleDescriptor, revisionId, true, false, true);"
+"spline = interpolator.interpolate(yArray, interpArray);"
+FSDataInputStream in = fileSystem.open(file.getPath());
+private ReentrantLock cacheLock = new ReentrantLock();
+final long numCalls = numberOfCalls.incrementAndGet();
+final WeakReference<AbandonedTrace> ref = iter.next();
+for (Schema.Field field : elementSchema.getFields()) {
+"System.arraycopy(tmpPreds, 0, sortPreds, 0, numPreds);"
+"log.error(""Problem starting remote cache server."", e);"
+if (lastBlock == (block == 0 ? 65535 : (block - 1))) {
+if (semver.compareTo(PARQUET_251_FIXED_VERSION) < 0) {
+protected void parseSystemRegions( Properties props )
+"LOG.error(""clearAll: Failed to delete file "" + file);"
+private boolean hasDependencies(IvyNode dependency) {
+"LOG.error(""clearAll: Failed to delete file "" + file);"
+"ccm.getDefaultCacheAttributes(), regionPrefix ), ea )"
+.addAll(messageStore.getCandidateBuffersToOffload());
+overrideBuilders.add(createConfigurationBuilder(cd));
+"private Integer loadMapping() throws KeeperException,"
+"return ""PoolingConnection: "" + _pstmtPool.toString();"
+for (ConfigurationDeclaration cd : unionDeclarations)
+private final byte[] lastModifiedBuf = new byte[12];
+for (int g = 4; g <= matcher.groupCount(); g += 1) {
+"parseRules(scanner, RESOURCE_FILE, RULES, FOLDINGS);"
+"attrmap = new HashMap<String, Collection<String>>();"
+updateLocalVariableTable(this.local_variable_table);
+updateLocalVariableTable(this.local_variable_table);
+final String key = zoneNames[i].toLowerCase(locale);
+} catch (KeeperException | InterruptedException e) {
+private static class LogOnErrorChannelFutureListener
+"pomDomDoc = docBuilder.parse(stream, res.getName());"
+"boolean decompressConcatenated, int memoryLimitInKb)"
+public Set<Integer> getCandidateBuffersToOffload() {
+setBarycenter((Point<Euclidean3D>) Cartesian3D.NaN);
+this.local_variable_table = (LocalVariableTable) a;
+CodecFactory codecFactory = new CodecFactory(conf);
+return buildGroup(repetition).as(OriginalType.LIST)
+""" coefficients, but "" + validColumnIndices.size() +"
+if (cacheFile.exists() && cacheFile.length() > 0) {
+private static final int PARSE_HTTP_IDN_SCHEME = 1;
+".getValue(""location"") : getDefaultParentLocation();"
+? new SimpleContext() : evaluator.newContext(null);
+if (xLen < minimumLength || yLen < minimumLength ||
+"StringBuilder regex, Map<String, Integer> values) {"
+BundleInfoAdapter.EXTRA_INFO_EXPORT_PREFIX + name);
+import org.apache.commons.scxml2.io.ContentParser;
+.addAll(edgeStore.getCandidateBuffersToOffload());
+statsBuilder.withNumNulls(formatStats.null_count);
+double[] predParams = PARAMS[pid].getParameters();
+"String q = ((SolrQuery<K, T>)query).toSolrQuery();"
+"final int i = searchIndex(x, xval, offset, count);"
+"final int j = searchIndex(y, yval, offset, count);"
+final double tolerance = thisPlane.getTolerance();
+if(!fieldProjectionFilter.keep(currentFieldPath)){
+unionBuilders.add(createConfigurationBuilder(cd));
+"updateElement(element, refHandler.getValue(node));"
+"spline = interpolator.interpolate(xArray, zArray);"
+private static final int PARSE_HTTP_IDN_REST = 3;
+"String.valueOf(listDelimiterHandler.escape(value,"
+int[] outcomePattern = PARAMS[pid].getOutcomes();
+protected synchronized static void initEngine() {
+ji = new JarInputStream(streamBridge.getInput());
+"contentValue = eval.eval(ctx, content.getExpr());"
+repeatedType.asGroupType().getFieldCount() > 1) {
+private static final int PARSE_HTTP_IDN_AUTH = 2;
+} else if (a instanceof LocalVariableTypeTable) {
+"getSettings(), temp.toURI().toURL(), res, false);"
+import org.apache.commons.math3.util.MathArrays;
+writeParamTypeRef = new WeakReference(types[1]);
+for (WorkerInfo worker : chosenWorkerInfoList) {
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+final int[] nSetI = combinationsIterator.next();
+cache.setElementSerializer( elementSerializer );
+"if ( alive.compareAndSet(true, false) == false )"
+"return new SemanticVersion(major, minor, patch);"
+"int start(String zkDir, ZookeeperConfig config);"
+elementSchema.getType() == Schema.Type.RECORD &&
+"NoDataException, NonMonotonicSequenceException {"
+final int[] nSetI = combinationsIterator.next();
+"if (!""parquet-mr"".equals(version.application)) {"
+for (int pi = 0; pi < predParams.length; pi++) {
+for (int zIndex = 0; zIndex < count; zIndex++) {
+"LOG.warn(""JMap histogram sleep interrupted"", e);"
+Set<String> fieldNames = new HashSet<String>();
+private ImmutableNode createChildNodeWithValue(
+IvyNode dependency = (IvyNode) iterator.next();
+private final byte[] fileModeBuf = new byte[8];
+public AbstractConverter(Object defaultValue) {
+removeSavedArtifactOrigin(transformedArtifact);
+import org.apache.commons.compress.MemoryLimit;
+"initializeTables(maxCodeSize, memoryLimitInKb);"
+protected void parseRegions( Properties props )
+elementSchema.getFields().get(0).name().equals(
+for (int pid = 0; pid < PARAMS.length; pid++) {
+"for (Map.Entry<String, Integer> entry : sort) {"
+"return visitPrimitiveType(BINARY, UTF8, state);"
+private final byte[] lengthBuf = new byte[10];
+private static String[] dissect(String path) {
+import org.apache.commons.math3.util.FastMath;
+repeatedType.asGroupType().getFieldName(0))) {
+"this(inputStream, decompressConcatenated, -1);"
+"getRequestingPrompt(), getRequestingScheme());"
+double[] activeParams = new double[numParams];
+port = Integer.parseInt(hostnameTaskArray[1]);
+for (int i = 0; i < confExtends.length; i++) {
+sortPreds = new ComparablePredicate[numPreds];
+reduceOp = new AggregatorReduceOperation<>();
+this.adaptedClassLoader = adaptedClassLoader;
+UpdateResponse rsp = server.deleteByQuery(q);
+docBuilder.setEntityResolver(entityResolver);
+double[] tmpParams = new double[numOutcomes];
+for (final CentroidCluster<T> c : clusters) {
+Span span = ((SpanAnnotation) ann).getSpan();
+currentEntry = readGNUStringTable(lengthBuf);
+private final ClassLoader adaptedClassLoader;
+"private String currentName = ""ParquetSchema"";"
+} catch (CompressorMemoryLimitException e) {
+"long start, long length) throws IOException{"
+"long start, long length) throws IOException{"
+protected Collection<V> createCollection() {
+private final byte[] nameBuf = new byte[16];
+"EnclosingBall<S, P> enclose(List<P> points);"
+bytesLeftToSkip -= currentInput.available();
+if (Strings.isNullOrEmpty(version.semver)) {
+c = ((DelegatingConnection)c).getDelegate();
+tmpOutcomes[numParams] = outcomePattern[pi];
+"LOG.warn(""There are "" + coefficient.length +"
+final double[] universe = new double[n + m];
+final double[] universe = new double[n + m];
+public ArrayList<ThriftField> getFields() {
+"workersMap.put(worker.getTaskId(), worker);"
+.withDictionaryPageSize(dictionaryPageSize)
+available += dataInputs.get(i).available();
+if (values.length == x.length + y.length) {
+} catch (SemanticVersionParseException e) {
+"final double zSquared = FastMath.pow(z, 2);"
+} catch (SemanticVersionParseException e) {
+return substitutor.replace((String) value);
+import org.tukaani.xz.MemoryLimitException;
+.withDictionaryPageSize(dictionaryPageSize)
+next = (ca[next] == sep) ? next + 1 : next;
+Thread thread = new Thread(new Runnable() {
+"appendValueAsString(buffer, (String)value);"
+final int status = transaction.getStatus();
+serverRunner = new ZooKeeperServerRunner();
+"c2[1], c2[0], c2[2],  c2[1],  c2[2],  c2[0]"
+"protected Map<K, Collection<V>> getMap() {"
+docBuilder = factory.newDocumentBuilder();
+"LOG.error(""Unable to start zookeeper"", e);"
+"vA.getY(), vB.getY(), vC.getY(), vD.getY()"
+exctx.getEventDispatcher().cancel(sendid);
+for (int i = 0; i < extreme.size(); ++i) {
+stats.setNumNulls(formatStats.null_count);
+"vA.getY(), vB.getY(), vC.getY(), vD.getY()"
+return n - bytesLeftToSkip + bytesSkipped;
+"vA.getX(), vB.getX(), vC.getX(), vD.getX()"
+URL parentUrl = cacheFile.toURI().toURL();
+"vA.getZ(), vB.getZ(), vC.getZ(), vD.getZ()"
+"vA.getX(), vB.getX(), vC.getX(), vD.getX()"
+int[] activeOutcomes = new int[numParams];
+prerelease |= (matcher.group(g) != null);
+currentRepetition = getRepetition(field);
+"return major + ""."" + minor + ""."" + patch;"
+Map.Entry prop = (Map.Entry) iter.next();
+.withDictionaryEncoding(enableDictionary)
+if (points == null || points.isEmpty()) {
+"nextsep = path.indexOf(sep, nextsep + 1);"
+localData.removeMappingStoreIfPossible();
+if (curD > d || (curD == d && !strict)) {
+while (propertyNames.hasMoreElements()) {
+"ball = moveToFrontBall(extreme, support);"
+private final byte[] idBuf = new byte[6];
+"""cause = "" + writeFuture.cause() + "", "" +"
+StringBuffer sbPath = new StringBuffer();
+.withDictionaryEncoding(enableDictionary)
+for (index = 0; index < count; index++) {
+"IOUtils.readFully(this, lastModifiedBuf);"
+sb.append(dependency.getId().toString());
+int[] tmpOutcomes = new int[numOutcomes];
+"createChildNodeWithValue(node, childNode,"
+if (curD > d || (curD == d && !strict)) {
+double interpArray[] = new double[count];
+for (int i = 1; i < values.length; i++) {
+return extendedDataInput.available() > 0;
+for (int pi = 0; pi < numParams; pi++) {
+if (!writeFuture.channel().isActive() ||
+for (int pi = 0; pi < numParams; pi++) {
+"log.debug(""putFile: "" + file.getName());"
+return defaultHistoryTransitionEntryMap;
+while (combinationsIterator.hasNext()) {
+while (combinationsIterator.hasNext()) {
+for (int pi = 0; pi < numParams; pi++) {
+"Map<String, Collection<String>> attrmap;"
+import org.apache.parquet.Preconditions;
+for (int i = next; i < ca.length; i++) {
+elementSchema.getFields().size() == 1 &&
+"private final Map<K, Collection<V>> map;"
+if (ca[i] != sep || ca[i - 1] != sep) {
+"validating, ParquetProperties.builder()"
+"simpleQuote(regex, symbol).append('|');"
+newThread = new SoftRefReleaseThread();
+throws CompressorMemoryLimitException {
+"validating, ParquetProperties.builder()"
+for (int i = 0; i < this.rcount; i++) {
+newThread = new SoftRefReleaseThread();
+"addArcLimit(minus, minusToPlus, false);"
+import com.google.common.collect.Lists;
+"System.arraycopy(y, 0, universe, n, m);"
+Thread.sleep(MEMORY_OBSERVER_SLEEP_MS);
+String appBuildHash = matcher.group(4);
+"System.arraycopy(x, 0, universe, 0, n);"
+"return Integer.compare(patch, o.patch);"
+if (Strings.isNullOrEmpty(createdBy)) {
+"System.arraycopy(y, 0, universe, n, m);"
+"System.arraycopy(x, 0, universe, 0, n);"
+"addArcLimit(plus, plusToMinus, false);"
+"addArcLimit(minus, plusToMinus, true);"
+} catch (final SecurityException ex) {
+} catch (final SecurityException ex) {
+tmpParams[numParams] = predParams[pi];
+throw new InsufficientDataException();
+interpArray[zIndex] = spline.value(x);
+"final int userId = asInt(idBuf, true);"
+Artifact artifact = adr.getArtifact();
+"final int userId = asInt(idBuf, true);"
+public void onlineZooKeeperServer() {
+activeOutcomes[pi] = tmpOutcomes[pi];
+"final double m12 = minor(c1, c3, c4);"
+"final double m13 = minor(c1, c2, c4);"
+DefaultModuleDescriptor md = getMd();
+double returnValue = spline.value(y);
+path = path.substring(root.length());
+"IOUtils.readFully(this, fileModeBuf);"
+if (pattern.isAllLowerCaseLetter()) {
+"final double m14 = minor(c1, c2, c3);"
+"final double m12 = minor(c1, c3, c4);"
+"addArcLimit(plus, minusToPlus, true);"
+if (!file.getParentFile().mkdirs()) {
+if (isUnion && !converted.isKeep()) {
+"Message.debug(""deleting "" + artFile);"
+"final double m13 = minor(c1, c2, c4);"
+thread = softRefReleaseThread.get();
+thread = new Thread(new Runnable() {
+if (currentInput.available() == 0) {
+final double[] nSet = new double[n];
+final double[] nSet = new double[n];
+for (String section : getSections())
+double zArray[] = new double[count];
+for (int i = 0; i < y.length; i++) {
+"addAttributeData(parent, result, n);"
+for (int i = 0; i < x.length; i++) {
+implements BivariateGridInterpolator
+if (initialCollectionCapacity < 0) {
+final double[] mSet = new double[m];
+double yArray[] = new double[count];
+final double[] mSet = new double[m];
+private Reference writeParamTypeRef;
+final char prevChar = str.charAt(i);
+double xArray[] = new double[count];
+"int nextsep = path.indexOf(sep, 2);"
+checkIfShouldMoveToNextDataInput();
+"childTrim.booleanValue(), attrmap);"
+public boolean equals(Object obj) {
+"IOUtils.readFully(this, lengthBuf);"
+Span entitySpan = entity.getSpan();
+if (e.getNextException() != null) {
+Properties systemProperties = null;
+return context.has(NASHORN_GLOBAL);
+} catch (VersionParseException e) {
+private static ScriptEngine engine;
+final double[] c4 = new double[] {
+String uriString = uri.toString();
+return quorumRunner.start(config);
+public BicubicSplineInterpolator()
+final double[] c2 = new double[] {
+return collectionFactory.create();
+throw new NullArgumentException();
+if (context.has(key.toString())) {
+private final int memoryLimitInKb;
+return getParent().getNodeModel();
+"LOG.warn(""Exception occurred"", e);"
+} catch (InterruptedException e) {
+return serverRunner.start(config);
+String uriString = uri.toString();
+for (ThriftField field : fields) {
+final double[] c1 = new double[] {
+writeFuture.channel().isActive() +
+final double[] c3 = new double[] {
+"thread.setName(""memory-observer"");"
+for (int i = 0; i < n + m; i++) {
+public void push(ThriftField f) {
+"IOUtils.readFully(this, nameBuf);"
+final double m20 = c2[2] * c3[0];
+final double m21 = c2[2] * c3[1];
+final Class<C> collectionClazz) {
+final double m13 = c2[1] * c3[3];
+"return new String[] {root, path};"
+final double m31 = c2[3] * c3[1];
+final double m10 = c2[1] * c3[0];
+.withWriterVersion(writerVersion)
+.withWriterVersion(writerVersion)
+final double m30 = c2[3] * c3[0];
+} catch (AgentProxyException e) {
+activeParams[pi] = tmpParams[pi];
+final double m12 = c2[1] * c3[2];
+final double m02 = c2[0] * c3[2];
+final double m32 = c2[3] * c3[2];
+String semver = matcher.group(3);
+final double m23 = c2[2] * c3[3];
+final double m01 = c2[0] * c3[1];
+final double m03 = c2[0] * c3[3];
+plus.setAttribute(Boolean.FALSE);
+String realClassName = className;
+for (int i = 0; i < n + m; i++) {
+xArray[index] = xval[i + index];
+ComparablePredicate[] sortPreds;
+if (vmatcher.isDynamic(mrid1)) {
+interface OffsetMetadataFilter {
+"addArcLimit(minus, a[1], false);"
+yArray[index] = yval[j + index];
+interface OffsetMetadataFilter {
+if (writeParamTypeRef != null) {
+public class CorruptStatistics {
+} catch (URISyntaxException e) {
+"attributes.getValue(""location""),"
+PolynomialSplineFunction spline;
+char[] ca = path.toCharArray();
+"addArcLimit(plus, a[1], false);"
+String symbol = entry.getKey();
+"Stack/*<IvyNode>*/ callerStack,"
+"root = path.substring(0, next);"
+"addArcLimit(minus, a[0], true);"
+if (attributes.getLength() > 0)
+"+ "" Parent="" + parentModRevID);"
+"IOUtils.readFully(this, idBuf);"
+MemoryManager memoryManager) {
+boolean contains(long offset);
+MemoryManager memoryManager) {
+} catch (RuntimeException e) {
+initializeTables(maxCodeSize);
+if (datum.getExpr() != null) {
+for (int i = 0; i < nC; ++i) {
+} catch (RuntimeException e) {
+"addArcLimit(plus, a[0], true);"
+boolean contains(long offset);
+"@SuppressWarnings(""unchecked"")"
+for (Object element : array) {
+} else  if (lower <= upper) {
+if (entityResolver != null) {
+final int count = offset + 3;
+long len = asLong(lengthBuf);
+factory.setValidating(false);
+import java.util.Enumeration;
+public ObjectPool getPool() {
+if (j < n && nSetI[j] == i) {
+fieldNames.add(field.name());
+"warnParseError(createdBy, e);"
+throws MemoryLimitException {
+"this(decompressUntilEOF, -1);"
+import java.util.Properties;
+"set(ZOOKEEPER_LIST, zkList);"
+parentDescr.getExtraInfo());
+externalEventQueue.add(evt);
+if (!expected.equals(pid)) {
+public void createSchema() {
+"return exactP(x, y, strict);"
+} while (ties && ct < 1000);
+parent.addChild(c.create());
+import java.io.Serializable;
+if (predParams[pi] != 0d) {
+if (Double.isNaN(result)) {
+double absoluteTolerance) {
+boolean prerelease = false;
+extreme.add(points.get(0));
+if (codecFactory != null) {
+if (codecFactory != null) {
+double maxMembership = 0.0;
+import java.util.Map.Entry;
+"BytesCompressor compressor,"
+return getMap().toString();
+if (this.hasNonNullValue())
+result.add(entry.getKey());
+new ThreadFactoryBuilder()
+int consecutiveXYTies = 1;
+if (confExtends != null) {
+if (!in.markSupported()) {
+if (yLen != f[0].length) {
+if (currentType != null) {
+public class JSFunctions {
+for (Object elt : array) {
+sort.addAll(displayNames);
+if (!in.markSupported()) {
+if (symbol.length() > 0) {
+ModuleDescriptor parent) {
+"ctx.setLocal(item, value);"
+int consecutiveXTies = 1;
+ccAttr = ccAttr2.clone();
+} catch (IOException e) {
+else if (!this.isEmpty())
+int consecutiveYTies = 1;
+"cache.put(dotPath, dict);"
+thread.requestEnd = true;
+"cache.put(dotPath, dict);"
+} catch (IOException e) {
+asLong(lastModifiedBuf));
+".getIndex(), start, end);"
+int indexOfThirdSample) {
+skipToEndElement(reader);
+path = sbPath.toString();
+private Type currentType;
+LOG.info(rsp.toString());
+if (!artFile.delete()) {
+super._connectAction_();
+nSet[j++] = universe[i];
+double prev = values[0];
+if (modelName != null) {
+"getMap().put(key, coll);"
+mSet[k++] = universe[i];
+return overrideBuilders;
+if (modelName != null) {
+private boolean running;
+nSet[j++] = universe[i];
+mSet[k++] = universe[i];
+"-d1.getY(), d2.getX()));"
+final int m = y.length;
+final int n = x.length;
+.withPageSize(pageSize)
+final int n = x.length;
+final int m = y.length;
+.withPageSize(pageSize)
+this.f = fs.open(file);
+codecFactory.release();
+public int hashCode() {
+this.f = fs.open(file);
+codecFactory.release();
+if (delta < minDelta) {
+int entriesLoaded = 0;
+import java.util.List;
+realClassName = value;
+"this(inputStream, -1);"
+moveToNextDataInput();
+if (Double.isNaN(d)) {
+while (host == null) {
+if (newThread != null)
+"asInt(fileModeBuf, 8),"
+int next = colon + 1;
+if (numParams != 0) {
+return unionBuilders;
+final int offset = 2;
+inactive.isEmpty()) {
+this.running = false;
+if (stream != null) {
+if (hasNulls(meta)) {
+if (elemRefs != null)
+sbPath.append(ca[i]);
+if (!file.delete()) {
+} else if (phased) {
+absoluteTolerance));
+throws IOException {
+} else if (phased) {
+ModuleDescriptor md;
+int tiedXYPairs = 0;
+e.printStackTrace();
+throws IOException {
+double minDelta = 1;
+throws IOException {
+if (file == null) {
+if (thread != null)
+this.fields.add(f);
+return returnValue;
+thread.interrupt();
+s.push(dissect[0]);
+String root = null;
+int tiedXPairs = 0;
+int tiedYPairs = 0;
+String host = null;
+"super(message, e);"
+double sign = 0.0;
+return Double.NaN;
+if (evt != null) {
+int available = 0;
+if (this == obj) {
+overrideBuilders =
+channel.connect();
+end = il.getEnd();
+if (null == end) {
+"super(message, e);"
+int numPreds = 0;
+return available;
+newThread = null;
+double delta = 1;
+minDelta = delta;
+server.commit();
+if (f != null) {
+if (f != null) {
+scanner.close();
+running = true;
+return running;
+namedBuilders =
+memoryManager);
+memoryManager);
+unionBuilders =
+thread.start();
+in.mark(MARK);
+minDelta /= 2;
+return result;
+return fields;
+long tail = 0;
+long tail = 0;
+Thread thread;
+return output;
+return false;
+return false;
+double[][] f)
+return false;
+int port = 0;
+return false;
+return true;
+root += sep;
+return true;
+return true;
+if (r < 0) {
+r -= offset;
+return true;
+return null;
+} finally {
+in.reset();
+in.reset();
+int j = 0;
+int j = 0;
+int k = 0;
+int k = 0;
+super(in);
+in.read();
+super(in);
+return md;
+int index;
+@Override
+z *= lnb;
+return r;
+@Override
+@Override
+@Override
+".build(),"
+return v;
+".build(),"
+} else {
+} else {
+} else {
+} else {
+throw e;
+e >>= 1;
+} else {
+} else {
+tail++;
+break;
+r = 0;
+try {
+try {
+try {
+try {
+try {
+try {
+try {
+ct++;
+try {
+try {
+try {
+else
+&& (
+else
+});
+});
+});
+});
+};
+do
+}
+}
+}
+{
+{
+}
+{
+}
+}
+}
+}
+}
+}
+}
+}
+}
+}
+}
+}
+}
+{
+}
+}
+}
+}
+}
+}
+}
+}

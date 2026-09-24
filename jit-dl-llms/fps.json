@@ -1,0 +1,646 @@
+[
+    {
+        "lineNumber": 132,
+        "codeContent": "Map parentPomProps = PomModuleDescriptorBuilder.extractPomProperties(parentDescr.getExtraInfo());",
+        "reason": "Dereferences parentDescr without verifying it is non-null. If the parent could not be resolved, this line will throw a NullPointerException.",
+        "score": 10,
+        "project": "ant-ivy"
+    },
+    {
+        "lineNumber": 132,
+        "codeContent": "Map parentPomProps = PomModuleDescriptorBuilder.extractPomProperties(parentDescr.getExtraInfo());",
+        "reason": "Dereferences parentDescr without verifying it is non-null. If the parent could not be resolved, this line will throw a NullPointerException.",
+        "score": 10,
+        "project": "ant-ivy"
+    },
+    {
+        "lineNumber": 132,
+        "codeContent": "Map parentPomProps = PomModuleDescriptorBuilder.extractPomProperties(parentDescr.getExtraInfo());",
+        "reason": "Dereferences parentDescr without verifying it is non-null. If the parent could not be resolved, this line will throw a NullPointerException.",
+        "score": 10,
+        "project": "ant-ivy"
+    },
+    {
+        "lineNumber": 236,
+        "codeContent": "client.setTimeout(timeout);",
+        "reason": "HttpClient 3.x does not expose setTimeout(int) on HttpClient; this call can cause a compile-time error. Even if it compiles against 2.x, it overrides any previously configured timeout and, when called with 0, disables timeouts globally on the shared client.",
+        "score": 10,
+        "project": "ant-ivy"
+    },
+    {
+        "lineNumber": 87,
+        "codeContent": "InputStream stream = new AddDTDFilterInputStream(descriptorURL.openStream());",
+        "reason": "AddDTDFilterInputStream requires mark/reset support, but descriptorURL.openStream() commonly returns streams (e.g., FileInputStream, HTTP streams) without mark support, causing an IllegalArgumentException and breaking parsing.",
+        "score": 10,
+        "project": "ant-ivy"
+    },
+    {
+        "lineNumber": 87,
+        "codeContent": "InputStream stream = new AddDTDFilterInputStream(descriptorURL.openStream());",
+        "reason": "AddDTDFilterInputStream requires mark/reset support, but descriptorURL.openStream() commonly returns streams (e.g., FileInputStream, HTTP streams) without mark support, causing an IllegalArgumentException and breaking parsing.",
+        "score": 10,
+        "project": "ant-ivy"
+    },
+    {
+        "lineNumber": 517,
+        "codeContent": "throw new IllegalArgumentException(\"The inputstream doesn't support mark\");",
+        "reason": "PomReader requires mark/reset support in its AddDTDFilterInputStream, but typical streams (e.g., FileInputStream, many HTTP streams) don\u2019t support mark, causing hard failures on valid POMs.",
+        "score": 10,
+        "project": "ant-ivy"
+    },
+    {
+        "lineNumber": 61,
+        "codeContent": "            Configuration conf = md.getConfiguration(callerConf);",
+        "reason": "md is the caller's ModuleDescriptor, but callerConf is now populated with requestedConf from the dependency. If that configuration does not exist on the caller, conf becomes null and will be dereferenced immediately below.",
+        "score": 10,
+        "project": "ant-ivy"
+    },
+    {
+        "lineNumber": 132,
+        "codeContent": "ResolveReport report = ivy.resolve(new File(\"test/repositories/2/mod15.4/ivy-1.1.xml\")\n                .toURL(), getResolveOptions(new String[] {\"default\"}).setValidate(false));",
+        "reason": "Test points to test/repositories/2/mod15.4/ivy-1.1.xml, but the repository change only modified mod15.2/ivy-1.1.xml and added mod15.3. No mod15.4 file was added, causing FileNotFoundException and test failure.",
+        "score": 10,
+        "project": "ant-ivy"
+    },
+    {
+        "lineNumber": 132,
+        "codeContent": "ResolveReport report = ivy.resolve(new File(\"test/repositories/2/mod15.4/ivy-1.1.xml\")\n                .toURL(), getResolveOptions(new String[] {\"default\"}).setValidate(false));",
+        "reason": "Test points to test/repositories/2/mod15.4/ivy-1.1.xml, but the repository change only modified mod15.2/ivy-1.1.xml and added mod15.3. No mod15.4 file was added, causing FileNotFoundException and test failure.",
+        "score": 10,
+        "project": "ant-ivy"
+    },
+    {
+        "lineNumber": 920,
+        "codeContent": "return rmr;",
+        "reason": "When a cached module is reused, this return occurs before the try/finally that releases the metadata lock introduced earlier, leaking the lock.",
+        "score": 10,
+        "project": "ant-ivy"
+    },
+    {
+        "lineNumber": 920,
+        "codeContent": "return rmr;",
+        "reason": "When a cached module is reused, this return occurs before the try/finally that releases the metadata lock introduced earlier, leaking the lock.",
+        "score": 10,
+        "project": "ant-ivy"
+    },
+    {
+        "lineNumber": 313,
+        "codeContent": "mRevId.getRevision(), artifact.getName(), artifact.getType(), artifact.getExt(), conf,",
+        "reason": "artifact refers to an ArtifactDownloadReport (not Artifact); it does not have getName()/getType()/getExt(). This will not compile; should use artifact.getArtifact().getName()/getType()/getExt().",
+        "score": 10,
+        "project": "ant-ivy"
+    },
+    {
+        "lineNumber": 382,
+        "codeContent": "return normalize(result.getPath());",
+        "reason": "resolveFile now always normalizes the result, even when it is still relative (e.g., base 'file' is relative). normalize() assumes absolute paths and will corrupt relative paths (drops first character and forces a root), producing incorrect paths like '/uild/...'.",
+        "score": 10,
+        "project": "ant-ivy"
+    },
+    {
+        "lineNumber": 545,
+        "codeContent": "Map.Entry e = (Entry) iterator.next();",
+        "reason": "Uses bare \"Entry\" in the cast. Unless java.util.Map.Entry is imported as Entry (it isn't elsewhere), this does not compile. Should cast to (Map.Entry).",
+        "score": 10,
+        "project": "ant-ivy"
+    },
+    {
+        "lineNumber": 293,
+        "codeContent": "jsch.setIdentityRepository(new RemoteIdentityRepository(con));",
+        "reason": "con is not checked for null. ConnectorFactory#createConnector() returns null when no supported connector is available, leading to a NullPointerException here and aborting SSH setup.",
+        "score": 10,
+        "project": "ant-ivy"
+    },
+    {
+        "lineNumber": 55,
+        "codeContent": "boolean sameBranch = (askedBranch == null) ? foundBranch == null\n                : askedBranch.equals(foundBranch);",
+        "reason": "This enforces strict branch equality even when the dependency did not request any branch (askedBranch == null). If the published module has a non-null branch (e.g., \"trunk\"), sameBranch becomes false and the candidate is rejected, breaking resolution for dependencies that intentionally do not constrain the branch.",
+        "score": 10,
+        "project": "ant-ivy"
+    },
+    {
+        "lineNumber": 55,
+        "codeContent": "boolean sameBranch = (askedBranch == null) ? foundBranch == null\n                : askedBranch.equals(foundBranch);",
+        "reason": "This enforces strict branch equality even when the dependency did not request any branch (askedBranch == null). If the published module has a non-null branch (e.g., \"trunk\"), sameBranch becomes false and the candidate is rejected, breaking resolution for dependencies that intentionally do not constrain the branch.",
+        "score": 10,
+        "project": "ant-ivy"
+    },
+    {
+        "lineNumber": 327,
+        "codeContent": "sum += FastMath.pow(distA / distB, 2.0 / (fuzzyness - 1.0));",
+        "reason": "Division by zero and NaN risk: if distB == 0 (point coincides with some cluster center), distA/distB is Infinity (or 0/0 -> NaN when j\u2019s center also coincides). This invalidates the membership computation.",
+        "score": 10,
+        "project": "commons-math"
+    },
+    {
+        "lineNumber": 282,
+        "codeContent": "double wgk = weight * grad[k];",
+        "reason": "Here, each row of the already weighted Jacobian is multiplied by weight again, which makes A accumulate w^2 J^T J instead of w J^T J.",
+        "score": 10,
+        "project": "commons-math"
+    },
+    {
+        "lineNumber": 274,
+        "codeContent": "final double wr = weight * residual;",
+        "reason": "With a pre-weighted Jacobian, the right-hand side should use r_w = W^{1/2} r, not W r; this multiplies by weight instead of sqrt(weight), yielding w^{3/2} when combined with grad from weighted J.",
+        "score": 10,
+        "project": "commons-math"
+    },
+    {
+        "lineNumber": 93,
+        "codeContent": "final SubHyperplane<Sphere1D> subPlus  = new Chord(x, !direct).wholeHyperplane();",
+        "reason": "Same constructor mismatch as line 70; Chord has no (S1Point, boolean) constructor. Compile-time error; prevents splitting logic from working.",
+        "score": 10,
+        "project": "commons-math"
+    },
+    {
+        "lineNumber": 70,
+        "codeContent": "return getRemainingRegion().side(new Chord(x, direct));",
+        "reason": "No Chord constructor matches (S1Point, boolean); existing constructor is (double, double). This is a compile-time error and the intended API usage is incorrect.",
+        "score": 10,
+        "project": "commons-math"
+    },
+    {
+        "lineNumber": 92,
+        "codeContent": "final S1Point x      = thisCircle.toSubSpace(crossings);",
+        "reason": "Same as line 69: passing S2Point[] to a method expecting a single Point<Sphere2D> is a type error.",
+        "score": 10,
+        "project": "commons-math"
+    },
+    {
+        "lineNumber": 68,
+        "codeContent": "final boolean direct = FastMath.sin(thisCircle.getAngle() - otherCircle.getAngle()) < 0;",
+        "reason": "Method 'getAngle()' is not defined in Circle. This yields a compile-time error.",
+        "score": 10,
+        "project": "commons-math"
+    },
+    {
+        "lineNumber": 157,
+        "codeContent": "                    if (distanceToCurrent > distanceToLast) {",
+        "reason": "When includeCollinearPoints is false and the new point is between p1 and p2 (distanceToCurrent <= distanceToLast), the else-branch below adds the interior collinear point to the hull, contradicting the setting and producing non-extreme vertices in the hull.",
+        "score": 10,
+        "project": "commons-math"
+    },
+    {
+        "lineNumber": 251,
+        "codeContent": "(numIterations < maximumIterations) && (a > lowerBound || b > upperBound);",
+        "reason": "Wrong inequality: b is compared with \"> upperBound\" instead of \"< upperBound\". Because b is always clamped with min(..., upperBound), it can never exceed upperBound, making the right-side expansion condition permanently false. This prematurely stops the search when the left bound reaches lowerBound even if the right side has not been explored.",
+        "score": 10,
+        "project": "commons-math"
+    },
+    {
+        "lineNumber": 251,
+        "codeContent": "(numIterations < maximumIterations) && (a > lowerBound || b > upperBound);",
+        "reason": "Wrong inequality: b is compared with \"> upperBound\" instead of \"< upperBound\". Because b is always clamped with min(..., upperBound), it can never exceed upperBound, making the right-side expansion condition permanently false. This prematurely stops the search when the left bound reaches lowerBound even if the right side has not been explored.",
+        "score": 10,
+        "project": "commons-math"
+    },
+    {
+        "lineNumber": 1627,
+        "codeContent": "return new Split(d).reciprocal().pow(-e).full;",
+        "reason": "Negating a long exponent can overflow when e == Long.MIN_VALUE (\u22122^63), leading to calling Split.pow with a negative value and an infinite loop.",
+        "score": 10,
+        "project": "commons-math"
+    },
+    {
+        "lineNumber": 1627,
+        "codeContent": "return new Split(d).reciprocal().pow(-e).full;",
+        "reason": "Negating a long exponent can overflow when e == Long.MIN_VALUE (\u22122^63), leading to calling Split.pow with a negative value and an infinite loop.",
+        "score": 10,
+        "project": "commons-math"
+    },
+    {
+        "lineNumber": 1194,
+        "codeContent": "throw new MathInternalError(); // Should never happen",
+        "reason": "This exception will be thrown for valid inputs containing repeated NaN or \u00b1Infinity since such ties cannot be broken by finite jitter, resulting in a hard failure.",
+        "score": 10,
+        "project": "commons-math"
+    },
+    {
+        "lineNumber": 70,
+        "codeContent": "switch (sectionType) {",
+        "reason": "sectionType can be null before any section header is encountered; switching on a null String throws NullPointerException. The previous code used \"equals\" checks which were null-safe.",
+        "score": 10,
+        "project": "opennlp"
+    },
+    {
+        "lineNumber": 186,
+        "codeContent": "return (Class<T>) getClassMethod.invoke(schema);",
+        "reason": "Reflection is invoked on the wrong receiver. The method getClass(Schema) belongs to the model instance, but this calls it on the Schema object, causing IllegalArgumentException at runtime and preventing correct datum class detection.",
+        "score": 10,
+        "project": "parquet-mr"
+    },
+    {
+        "lineNumber": 156,
+        "codeContent": "State valueState = new State(state.path.push(valueField), OPTIONAL, \"value\");",
+        "reason": "Map values are set OPTIONAL with a comment indicating it should be REQUIRED. Treating map values as optional can lead to schemas that accept null/missing values where Thrift does not, causing read/write compatibility issues and violating Thrift semantics.",
+        "score": 10,
+        "project": "parquet-mr"
+    },
+    {
+        "lineNumber": 156,
+        "codeContent": "State valueState = new State(state.path.push(valueField), OPTIONAL, \"value\");",
+        "reason": "Map values are set OPTIONAL with a comment indicating it should be REQUIRED. Treating map values as optional can lead to schemas that accept null/missing values where Thrift does not, causing read/write compatibility issues and violating Thrift semantics.",
+        "score": 10,
+        "project": "parquet-mr"
+    },
+    {
+        "lineNumber": 75,
+        "codeContent": "<sourceRoot>${basedir}/target/generated-src</sourceRoot>",
+        "reason": "exec-maven-plugin does not support a sourceRoot parameter; this setting is ignored, so the generated source directory is not added to the compilation roots. With the original Version.java deleted, compilation will fail due to missing org.apache.parquet.Version.",
+        "score": 10,
+        "project": "parquet-mr"
+    },
+    {
+        "lineNumber": 210,
+        "codeContent": "return configuration.getInt(MAX_ROW_COUNT_FOR_PAGE_SIZE_CHECK,",
+        "reason": "Wrong default used for the maximum row-count: the method returns DEFAULT_MINIMUM_RECORD_COUNT_FOR_CHECK instead of DEFAULT_MAXIMUM_RECORD_COUNT_FOR_CHECK. This forces the max to fall back to the min, causing too-frequent size checks and smaller pages.",
+        "score": 10,
+        "project": "parquet-mr"
+    },
+    {
+        "lineNumber": 210,
+        "codeContent": "return configuration.getInt(MAX_ROW_COUNT_FOR_PAGE_SIZE_CHECK,",
+        "reason": "Wrong default used for the maximum row-count: the method returns DEFAULT_MINIMUM_RECORD_COUNT_FOR_CHECK instead of DEFAULT_MAXIMUM_RECORD_COUNT_FOR_CHECK. This forces the max to fall back to the min, causing too-frequent size checks and smaller pages.",
+        "score": 10,
+        "project": "parquet-mr"
+    },
+    {
+        "lineNumber": 210,
+        "codeContent": "return configuration.getInt(MAX_ROW_COUNT_FOR_PAGE_SIZE_CHECK,",
+        "reason": "Wrong default used for the maximum row-count: the method returns DEFAULT_MINIMUM_RECORD_COUNT_FOR_CHECK instead of DEFAULT_MAXIMUM_RECORD_COUNT_FOR_CHECK. This forces the max to fall back to the min, causing too-frequent size checks and smaller pages.",
+        "score": 10,
+        "project": "parquet-mr"
+    },
+    {
+        "lineNumber": 540,
+        "codeContent": "currentBlock.addColumn(ColumnChunkMetaData.get(\n          chunk.getPath(),\n          chunk.getType(),\n          chunk.getCodec(),\n          chunk.getEncodings(),\n          chunk.getStatistics(),\n          newChunkStart,\n          newChunkStart,\n          chunk.getValueCount(),\n          chunk.getTotalSize(),\n          chunk.getTotalUncompressedSize()));",
+        "reason": "Incorrect metadata offsets: both dataPageOffset and dictionaryPageOffset are set to the start of the chunk. If the source chunk has a dictionary page, readers will seek to the wrong offsets. Offsets should be translated relative to the newChunkStart using the original offsets.",
+        "score": 10,
+        "project": "parquet-mr"
+    },
+    {
+        "lineNumber": 540,
+        "codeContent": "currentBlock.addColumn(ColumnChunkMetaData.get(\n          chunk.getPath(),\n          chunk.getType(),\n          chunk.getCodec(),\n          chunk.getEncodings(),\n          chunk.getStatistics(),\n          newChunkStart,\n          newChunkStart,\n          chunk.getValueCount(),\n          chunk.getTotalSize(),\n          chunk.getTotalUncompressedSize()));",
+        "reason": "Incorrect metadata offsets: both dataPageOffset and dictionaryPageOffset are set to the start of the chunk. If the source chunk has a dictionary page, readers will seek to the wrong offsets. Offsets should be translated relative to the newChunkStart using the original offsets.",
+        "score": 10,
+        "project": "parquet-mr"
+    },
+    {
+        "lineNumber": 540,
+        "codeContent": "currentBlock.addColumn(ColumnChunkMetaData.get(\n          chunk.getPath(),\n          chunk.getType(),\n          chunk.getCodec(),\n          chunk.getEncodings(),\n          chunk.getStatistics(),\n          newChunkStart,\n          newChunkStart,\n          chunk.getValueCount(),\n          chunk.getTotalSize(),\n          chunk.getTotalUncompressedSize()));",
+        "reason": "Incorrect metadata offsets: both dataPageOffset and dictionaryPageOffset are set to the start of the chunk. If the source chunk has a dictionary page, readers will seek to the wrong offsets. Offsets should be translated relative to the newChunkStart using the original offsets.",
+        "score": 10,
+        "project": "parquet-mr"
+    },
+    {
+        "lineNumber": 540,
+        "codeContent": "currentBlock.addColumn(ColumnChunkMetaData.get(\n          chunk.getPath(),\n          chunk.getType(),\n          chunk.getCodec(),\n          chunk.getEncodings(),\n          chunk.getStatistics(),\n          newChunkStart,\n          newChunkStart,\n          chunk.getValueCount(),\n          chunk.getTotalSize(),\n          chunk.getTotalUncompressedSize()));",
+        "reason": "Incorrect metadata offsets: both dataPageOffset and dictionaryPageOffset are set to the start of the chunk. If the source chunk has a dictionary page, readers will seek to the wrong offsets. Offsets should be translated relative to the newChunkStart using the original offsets.",
+        "score": 10,
+        "project": "parquet-mr"
+    },
+    {
+        "lineNumber": 540,
+        "codeContent": "currentBlock.addColumn(ColumnChunkMetaData.get(\n          chunk.getPath(),\n          chunk.getType(),\n          chunk.getCodec(),\n          chunk.getEncodings(),\n          chunk.getStatistics(),\n          newChunkStart,\n          newChunkStart,\n          chunk.getValueCount(),\n          chunk.getTotalSize(),\n          chunk.getTotalUncompressedSize()));",
+        "reason": "Incorrect metadata offsets: both dataPageOffset and dictionaryPageOffset are set to the start of the chunk. If the source chunk has a dictionary page, readers will seek to the wrong offsets. Offsets should be translated relative to the newChunkStart using the original offsets.",
+        "score": 10,
+        "project": "parquet-mr"
+    },
+    {
+        "lineNumber": 540,
+        "codeContent": "currentBlock.addColumn(ColumnChunkMetaData.get(\n          chunk.getPath(),\n          chunk.getType(),\n          chunk.getCodec(),\n          chunk.getEncodings(),\n          chunk.getStatistics(),\n          newChunkStart,\n          newChunkStart,\n          chunk.getValueCount(),\n          chunk.getTotalSize(),\n          chunk.getTotalUncompressedSize()));",
+        "reason": "Incorrect metadata offsets: both dataPageOffset and dictionaryPageOffset are set to the start of the chunk. If the source chunk has a dictionary page, readers will seek to the wrong offsets. Offsets should be translated relative to the newChunkStart using the original offsets.",
+        "score": 10,
+        "project": "parquet-mr"
+    },
+    {
+        "lineNumber": 540,
+        "codeContent": "currentBlock.addColumn(ColumnChunkMetaData.get(\n          chunk.getPath(),\n          chunk.getType(),\n          chunk.getCodec(),\n          chunk.getEncodings(),\n          chunk.getStatistics(),\n          newChunkStart,\n          newChunkStart,\n          chunk.getValueCount(),\n          chunk.getTotalSize(),\n          chunk.getTotalUncompressedSize()));",
+        "reason": "Incorrect metadata offsets: both dataPageOffset and dictionaryPageOffset are set to the start of the chunk. If the source chunk has a dictionary page, readers will seek to the wrong offsets. Offsets should be translated relative to the newChunkStart using the original offsets.",
+        "score": 10,
+        "project": "parquet-mr"
+    },
+    {
+        "lineNumber": 540,
+        "codeContent": "currentBlock.addColumn(ColumnChunkMetaData.get(\n          chunk.getPath(),\n          chunk.getType(),\n          chunk.getCodec(),\n          chunk.getEncodings(),\n          chunk.getStatistics(),\n          newChunkStart,\n          newChunkStart,\n          chunk.getValueCount(),\n          chunk.getTotalSize(),\n          chunk.getTotalUncompressedSize()));",
+        "reason": "Incorrect metadata offsets: both dataPageOffset and dictionaryPageOffset are set to the start of the chunk. If the source chunk has a dictionary page, readers will seek to the wrong offsets. Offsets should be translated relative to the newChunkStart using the original offsets.",
+        "score": 10,
+        "project": "parquet-mr"
+    },
+    {
+        "lineNumber": 540,
+        "codeContent": "currentBlock.addColumn(ColumnChunkMetaData.get(\n          chunk.getPath(),\n          chunk.getType(),\n          chunk.getCodec(),\n          chunk.getEncodings(),\n          chunk.getStatistics(),\n          newChunkStart,\n          newChunkStart,\n          chunk.getValueCount(),\n          chunk.getTotalSize(),\n          chunk.getTotalUncompressedSize()));",
+        "reason": "Incorrect metadata offsets: both dataPageOffset and dictionaryPageOffset are set to the start of the chunk. If the source chunk has a dictionary page, readers will seek to the wrong offsets. Offsets should be translated relative to the newChunkStart using the original offsets.",
+        "score": 10,
+        "project": "parquet-mr"
+    },
+    {
+        "lineNumber": 540,
+        "codeContent": "currentBlock.addColumn(ColumnChunkMetaData.get(\n          chunk.getPath(),\n          chunk.getType(),\n          chunk.getCodec(),\n          chunk.getEncodings(),\n          chunk.getStatistics(),\n          newChunkStart,\n          newChunkStart,\n          chunk.getValueCount(),\n          chunk.getTotalSize(),\n          chunk.getTotalUncompressedSize()));",
+        "reason": "Incorrect metadata offsets: both dataPageOffset and dictionaryPageOffset are set to the start of the chunk. If the source chunk has a dictionary page, readers will seek to the wrong offsets. Offsets should be translated relative to the newChunkStart using the original offsets.",
+        "score": 10,
+        "project": "parquet-mr"
+    },
+    {
+        "lineNumber": 544,
+        "codeContent": "newChunkStart,",
+        "reason": "Incorrect first data page offset in appended metadata. The firstDataPageOffset must be adjusted relative to the new file: newChunkStart + (chunk.getFirstDataPageOffset() - chunk.getStartingPos()). Using newChunkStart breaks readers that seek to the first data page.",
+        "score": 10,
+        "project": "parquet-mr"
+    },
+    {
+        "lineNumber": 7478,
+        "codeContent": "boolean isWhitespace = Character.isWhitespace(actualChar);",
+        "reason": "Character.isWhitespace does not treat NBSP (\\u00A0) as whitespace. This causes NBSP to be handled as a normal character, breaking normalization and trimming semantics for NBSP.",
+        "score": 10,
+        "project": "commons-lang"
+    },
+    {
+        "lineNumber": 2583,
+        "codeContent": "buffer.append(\"\\\"\" + value + \"\\\"\");",
+        "reason": "String values are not JSON-escaped (e.g., embedded quotes, backslashes, control characters). This produces invalid JSON for inputs like \"a\"\"b\" or with newlines.",
+        "score": 10,
+        "project": "commons-lang"
+    },
+    {
+        "lineNumber": 751,
+        "codeContent": "static final String TZ_DATABASE= \"(?:\\\\p{L}[\\\\p{L}\\\\p{Mc}\\\\p{Nd}\\\\p{Zs}\\\\p{P}&&[^-]]*-?\\\\p{Zs}?)*\";",
+        "reason": "The outer '*' allows an empty match for the timezone token. This lets the parser accept an empty timezone string for 'z', which then yields value=\"\" and tzNames.get(\"\") returns null, leading to a NullPointerException or wrong timezone application downstream.",
+        "score": 10,
+        "project": "commons-lang"
+    },
+    {
+        "lineNumber": 751,
+        "codeContent": "static final String TZ_DATABASE= \"(?:\\\\p{L}[\\\\p{L}\\\\p{Mc}\\\\p{Nd}\\\\p{Zs}\\\\p{P}&&[^-]]*-?\\\\p{Zs}?)*\";",
+        "reason": "The outer '*' allows an empty match for the timezone token. This lets the parser accept an empty timezone string for 'z', which then yields value=\"\" and tzNames.get(\"\") returns null, leading to a NullPointerException or wrong timezone application downstream.",
+        "score": 10,
+        "project": "commons-lang"
+    },
+    {
+        "lineNumber": 751,
+        "codeContent": "static final String TZ_DATABASE= \"(?:\\\\p{L}[\\\\p{L}\\\\p{Mc}\\\\p{Nd}\\\\p{Zs}\\\\p{P}&&[^-]]*-?\\\\p{Zs}?)*\";",
+        "reason": "The outer '*' allows an empty match for the timezone token. This lets the parser accept an empty timezone string for 'z', which then yields value=\"\" and tzNames.get(\"\") returns null, leading to a NullPointerException or wrong timezone application downstream.",
+        "score": 10,
+        "project": "commons-lang"
+    },
+    {
+        "lineNumber": 751,
+        "codeContent": "static final String TZ_DATABASE= \"(?:\\\\p{L}[\\\\p{L}\\\\p{Mc}\\\\p{Nd}\\\\p{Zs}\\\\p{P}&&[^-]]*-?\\\\p{Zs}?)*\";",
+        "reason": "The outer '*' allows an empty match for the timezone token. This lets the parser accept an empty timezone string for 'z', which then yields value=\"\" and tzNames.get(\"\") returns null, leading to a NullPointerException or wrong timezone application downstream.",
+        "score": 10,
+        "project": "commons-lang"
+    },
+    {
+        "lineNumber": 0,
+        "codeContent": "public boolean checkState() throws CircuitBreakingException {\n        return isOpen();\n    }",
+        "reason": "Violates CircuitBreaker contract: checkState() should return true when CLOSED, false when OPEN. Returning isOpen() inverts the semantics and will cause callers to misinterpret the result.",
+        "score": 10,
+        "project": "commons-lang"
+    },
+    {
+        "lineNumber": 225,
+        "codeContent": "if (!ClassUtils.isAssignable(parameterTypes[i], varArgParameterType, true)) {",
+        "reason": "MemberUtils.isMatchingExecutable rejects valid varargs matches where the caller supplies a single explicit array argument equal in count to declared parameters (e.g., String[] for String...), because it checks assignability against the component type instead of accepting the array for the last parameter.",
+        "score": 10,
+        "project": "commons-lang"
+    },
+    {
+        "lineNumber": 145,
+        "codeContent": "final String header = \"Proxy-Authorization: Basic \" + base64.encodeToString(auth.getBytes(\"UTF-8\"));",
+        "reason": "org.apache.commons.net.util.Base64 does not provide encodeToString(byte[]) (it encodes to byte[] or uses different methods). This will not compile, breaking proxy authentication entirely.",
+        "score": 10,
+        "project": "commons-net"
+    },
+    {
+        "lineNumber": 750,
+        "codeContent": "if (Modifier.isPublic(clazz.getModifiers())) { return (method); }",
+        "reason": "Accessibility is decided based on the runtime target class (clazz) rather than the method's declaring class. This can return a Method whose declaring class is non-public, causing IllegalAccessException at invocation.",
+        "score": 10,
+        "project": "commons-beanutils"
+    },
+    {
+        "lineNumber": 497,
+        "codeContent": "return classLoader.loadClass(className);",
+        "reason": "Second load attempt uses the same classLoader variable as the first attempt instead of this class's loader; fallback is ineffective, preventing reload when the context class loader cannot see the class.",
+        "score": 10,
+        "project": "commons-beanutils"
+    },
+    {
+        "lineNumber": 484,
+        "codeContent": "return compressorStreamProvider.createCompressorInputStream(name, in, actualDecompressConcatenated);",
+        "reason": "Calling the new 3-arg method on providers is binary-incompatible with existing third-party CompressorStreamProvider implementations compiled against the old 2-arg interface, causing AbstractMethodError/IncompatibleClassChangeError at runtime when discovered via service loading.",
+        "score": 10,
+        "project": "commons-compress"
+    },
+    {
+        "lineNumber": 484,
+        "codeContent": "return compressorStreamProvider.createCompressorInputStream(name, in, actualDecompressConcatenated);",
+        "reason": "Calling the new 3-arg method on providers is binary-incompatible with existing third-party CompressorStreamProvider implementations compiled against the old 2-arg interface, causing AbstractMethodError/IncompatibleClassChangeError at runtime when discovered via service loading.",
+        "score": 10,
+        "project": "commons-compress"
+    },
+    {
+        "lineNumber": 436,
+        "codeContent": "return new LZMACompressorInputStream(in, lzmaMemoryLimitKb);",
+        "reason": "Unconditionally uses the new two-argument LZMA constructor after only checking LZMAUtils.isLZMACompressionAvailable(). That check verifies class presence but not constructor availability. With older org.tukaani.xz versions lacking LZMAInputStream(InputStream,int), this call can trigger NoSuchMethodError at runtime rather than a clean CompressorException.",
+        "score": 10,
+        "project": "commons-compress"
+    },
+    {
+        "lineNumber": 533,
+        "codeContent": "return new XZCompressorInputStream(in, actualDecompressConcatenated, memoryLimitInKb);",
+        "reason": "This constructor throws IOException/MemoryLimitException, but the factory method still only declares throws CompressorException. Without a try/catch and wrapping, this introduces an unhandled checked exception (compile-time error) and changes the exception type visible to callers that only catch CompressorException.",
+        "score": 10,
+        "project": "commons-compress"
+    },
+    {
+        "lineNumber": 1,
+        "codeContent": "return null;",
+        "reason": "CombinedConfigurationBuilder.getConfiguration(boolean load) unconditionally returns null after setup calls. This breaks clients relying on this API, causing NullPointerException or logic failures instead of returning a CombinedConfiguration.",
+        "score": 10,
+        "project": "commons-configuration"
+    },
+    {
+        "lineNumber": 130,
+        "codeContent": "if (rc.checkForReloading(null) || rc.isInReloadingState())",
+        "reason": "Drops the caller-supplied context parameter by always passing null to child controllers. Controllers that require a non-null context to evaluate reloading can misbehave (false negatives or NPEs).",
+        "score": 10,
+        "project": "commons-configuration"
+    },
+    {
+        "lineNumber": 1520,
+        "codeContent": "if (locator != null)",
+        "reason": "All include resolution is guarded by this condition. If locator is null, the method silently does nothing (no load and no exception), causing include directives to be ignored.",
+        "score": 10,
+        "project": "commons-configuration"
+    },
+    {
+        "lineNumber": 878,
+        "codeContent": "return null;",
+        "reason": "getGlobalSection() unconditionally returns null. This invalidates access to the global section (e.g., write() and user code), causing NPEs and loss of functionality.",
+        "score": 10,
+        "project": "commons-configuration"
+    },
+    {
+        "lineNumber": 1456,
+        "codeContent": "            for (int i = 0; i < srcDecl.size(); i++)",
+        "reason": "Iterates by index over srcDecl but indexes into builders with the same i without checking builders.size(). If the lists are not the same size, builders.get(i) throws IndexOutOfBoundsException, or mismatched entries are paired incorrectly.",
+        "score": 10,
+        "project": "commons-configuration"
+    },
+    {
+        "lineNumber": 421,
+        "codeContent": "protected void processRemovedLRU( K key, int[] value )",
+        "reason": "In BlockDiskKeyStore.LRUMapSizeLimited.processRemovedLRU, contentSize is never decremented when an entry is evicted by LRU (only freeBlocks is called). This makes contentSize drift upward and can cause continuous evictions and violation of the configured size limit.",
+        "score": 10,
+        "project": "commons-jcs"
+    },
+    {
+        "lineNumber": 121,
+        "codeContent": "if (arrayObject != null && arrayObject instanceof Iterable || arrayObject.getClass().isArray()) {",
+        "reason": "Operator precedence bug: when arrayObject is null, the right side arrayObject.getClass().isArray() is still evaluated, causing a NullPointerException. Should be: arrayObject != null && (arrayObject instanceof Iterable || arrayObject.getClass().isArray()).",
+        "score": 10,
+        "project": "commons-scxml"
+    },
+    {
+        "lineNumber": 398,
+        "codeContent": "if (st instanceof SimpleTransition) {\n    t = (Transition)st;\n}\nelse {\n    t = (Transition) st;\n}",
+        "reason": "Incorrect instanceof check and cast: the condition is always true (st is declared as SimpleTransition), causing a ClassCastException when st is not a Transition (e.g., initial/history SimpleTransition). Should check 'st instanceof Transition' before casting.",
+        "score": 10,
+        "project": "commons-scxml"
+    },
+    {
+        "lineNumber": 401,
+        "codeContent": "Context internalContext = Evaluator.NULL_DATA_MODEL.equals(evaluator.getSupportedDatamodel()) ?\n                        new SimpleContext(systemContext) : evaluator.newContext(rootContext);",
+        "reason": "Uses systemContext as constructor argument before it is assigned (null). For NULL datamodel this creates a SimpleContext with a null parent instead of the intended rootContext, breaking the Context chain for the system context.",
+        "score": 10,
+        "project": "commons-scxml"
+    },
+    {
+        "lineNumber": 401,
+        "codeContent": "Context internalContext = Evaluator.NULL_DATA_MODEL.equals(evaluator.getSupportedDatamodel()) ?\n                        new SimpleContext(systemContext) : evaluator.newContext(rootContext);",
+        "reason": "Uses systemContext as constructor argument before it is assigned (null). For NULL datamodel this creates a SimpleContext with a null parent instead of the intended rootContext, breaking the Context chain for the system context.",
+        "score": 10,
+        "project": "commons-scxml"
+    },
+    {
+        "lineNumber": 401,
+        "codeContent": "Context internalContext = Evaluator.NULL_DATA_MODEL.equals(evaluator.getSupportedDatamodel()) ?\n                        new SimpleContext(systemContext) : evaluator.newContext(rootContext);",
+        "reason": "Uses systemContext as constructor argument before it is assigned (null). For NULL datamodel this creates a SimpleContext with a null parent instead of the intended rootContext, breaking the Context chain for the system context.",
+        "score": 10,
+        "project": "commons-scxml"
+    },
+    {
+        "lineNumber": 321,
+        "codeContent": "return (Bindings) bindings.get(NASHORN_GLOBAL);",
+        "reason": "Unsafe cast: in Nashorn, 'nashorn.global' typically holds a ScriptObject/ScriptObjectMirror, not a javax.script.Bindings. This cast can trigger ClassCastException when accessed.",
+        "score": 10,
+        "project": "commons-scxml"
+    },
+    {
+        "lineNumber": 178,
+        "codeContent": "doc = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(xmlString);",
+        "reason": "xmlString is treated as a systemId/URL, not as XML content. Passing raw XML text here will attempt to open it as a URL/path and fail. Should parse from a reader/input source (e.g., new InputSource(new StringReader(xmlString))).",
+        "score": 10,
+        "project": "commons-scxml"
+    },
+    {
+        "lineNumber": 1097,
+        "codeContent": "private void assignPartitionOwners() {",
+        "reason": "Method signature dropped parameters (e.g., allPartitionStatsList) but the body still references them later. This will cause a compile-time error: cannot find symbol for allPartitionStatsList.",
+        "score": 10,
+        "project": "giraph"
+    },
+    {
+        "lineNumber": 1097,
+        "codeContent": "private void assignPartitionOwners() {",
+        "reason": "Method signature dropped parameters (e.g., allPartitionStatsList) but the body still references them later. This will cause a compile-time error: cannot find symbol for allPartitionStatsList.",
+        "score": 10,
+        "project": "giraph"
+    },
+    {
+        "lineNumber": 1097,
+        "codeContent": "private void assignPartitionOwners() {",
+        "reason": "Method signature dropped parameters (e.g., allPartitionStatsList) but the body still references them later. This will cause a compile-time error: cannot find symbol for allPartitionStatsList.",
+        "score": 10,
+        "project": "giraph"
+    },
+    {
+        "lineNumber": 1439,
+        "codeContent": "Path validFilePath = new Path(getCheckpointBasePath(getSuperstep()) + \".\" +\n        getTaskPartition() + name);",
+        "reason": "getTaskPartition() is not defined on BspServiceWorker; should likely use getWorkerInfo().getTaskId() or a similar existing accessor. This causes a compile-time error.",
+        "score": 10,
+        "project": "giraph"
+    },
+    {
+        "lineNumber": 1439,
+        "codeContent": "Path validFilePath = new Path(getCheckpointBasePath(getSuperstep()) + \".\" +\n        getTaskPartition() + name);",
+        "reason": "getTaskPartition() is not defined on BspServiceWorker; should likely use getWorkerInfo().getTaskId() or a similar existing accessor. This causes a compile-time error.",
+        "score": 10,
+        "project": "giraph"
+    },
+    {
+        "lineNumber": 310,
+        "codeContent": "checkState(fileStatusArray.length == 1, \"createZooKeeperServerList: too many status files found \" + Arrays.toString(fileStatusArray));",
+        "reason": "Requires exactly one task stamp in taskDirectory, but all tasks typically create a stamp. This assertion will fire as soon as more than one task writes its stamp, aborting startup.",
+        "score": 10,
+        "project": "giraph"
+    },
+    {
+        "lineNumber": 310,
+        "codeContent": "checkState(fileStatusArray.length == 1, \"createZooKeeperServerList: too many status files found \" + Arrays.toString(fileStatusArray));",
+        "reason": "Requires exactly one task stamp in taskDirectory, but all tasks typically create a stamp. This assertion will fire as soon as more than one task writes its stamp, aborting startup.",
+        "score": 10,
+        "project": "giraph"
+    },
+    {
+        "lineNumber": 779,
+        "codeContent": "if (coefficient.length != validColumnIndices.size()) {",
+        "reason": "Incorrect validation: coefficient.length is fixed at 6 (5 predictors + intercept), while validColumnIndices.size() varies between 1..5. This condition is virtually always true and throws, preventing model fitting (isValid never becomes true), disabling predictions and breaking OOC control.",
+        "score": 10,
+        "project": "giraph"
+    },
+    {
+        "lineNumber": 159,
+        "codeContent": "if (numUpdates % statsPrintFrequency == 0) {",
+        "reason": "statsPrintFrequency can be 0 from configuration, causing ArithmeticException (modulo by zero). Previously this was a constant 10 and safe.",
+        "score": 10,
+        "project": "giraph"
+    },
+    {
+        "lineNumber": 159,
+        "codeContent": "if (numUpdates % statsPrintFrequency == 0) {",
+        "reason": "statsPrintFrequency can be 0 from configuration, causing ArithmeticException (modulo by zero). Previously this was a constant 10 and safe.",
+        "score": 10,
+        "project": "giraph"
+    },
+    {
+        "lineNumber": 159,
+        "codeContent": "if (numUpdates % statsPrintFrequency == 0) {",
+        "reason": "statsPrintFrequency can be 0 from configuration, causing ArithmeticException (modulo by zero). Previously this was a constant 10 and safe.",
+        "score": 10,
+        "project": "giraph"
+    },
+    {
+        "lineNumber": 159,
+        "codeContent": "if (numUpdates % statsPrintFrequency == 0) {",
+        "reason": "statsPrintFrequency can be 0 from configuration, causing ArithmeticException (modulo by zero). Previously this was a constant 10 and safe.",
+        "score": 10,
+        "project": "giraph"
+    },
+    {
+        "lineNumber": 256,
+        "codeContent": "        this.server = new LBHttpSolrClient( solrUrlElements + \"/\" + mapping.getCoreName() );",
+        "reason": "Concatenating a String[] with a String results in array toString (e.g. \"[Ljava.lang.String;@...\") producing an invalid URL. LBHttpSolrClient also expects varargs base URLs, not a single concatenated string.",
+        "score": 10,
+        "project": "gora"
+    },
+    {
+        "lineNumber": 231,
+        "codeContent": "      this.adminServer = new CloudSolrClient(SolrClientUrl);",
+        "reason": "CloudSolrClient expects a ZooKeeper connection string (e.g. host1:2181/solr), not an HTTP Solr URL. Passing an HTTP URL will fail to connect to ZK in Solr 5.",
+        "score": 10,
+        "project": "gora"
+    }
+]

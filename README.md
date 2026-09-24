@@ -20,4 +20,14 @@ The following random seeds were used to run the experiments repetitions: [33 (de
 
 - [jit-dl-llms/JIT-DL-GPT-5.ipynb](jit-dl-llms/JIT-DL-GPT-5.ipynb): Quantitative and qualitative experiments with GPT-5, the LLM with the best observed metrics in our experiments.
 - response-gpt-5_exec-*.pkl files: Different runs for the same LLM
+
+#### False-positives analysis
+
+- Prompt: "I am attaching a .json file containing a list of false positives, i.e., lines classified as defective when they are actually non-defective. Analyze the file and return a list of the most common types of false positives, explicitly indicating the corresponding JSON excerpts and their respective projects."
+- File: [jit-dl-llms/fps.json](jit-dl-llms/fps.json) 
+
+#### False-negatives analysis
+
+- Prompt: "The attached .txt file contains a list of false negatives, i.e., lines classified as clean when they are actually defective. Analyze the file and return a list of the most common types of false negatives."
+- File: [jit-dl-llms/fns.txt](jit-dl-llms/fns.txt) 
    
