@@ -4,3 +4,8 @@
 /jit-dl-llms/json/__pycache__/*.pyc
 /jit-dl-llms/json/sample_buggy_changes.json
 /jit-dl-llms/json/simple_json_parser.py
+
+# RQ1 replication scripts: dependencies and intermediate files
+/deps/
+/results/rq1/work/
+__pycache__/

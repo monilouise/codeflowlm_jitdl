@@ -1,0 +1,10 @@
+# CodeFlowLM (RQ1). Versions pinned in the Colab notebooks; torch comes preinstalled in Colab.
+river
+transformers==5.9.0
+huggingface_hub==1.16.4
+torchao==0.17.0
+peft
+tqdm
+pandas
+scikit-learn
+matplotlib

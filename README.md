@@ -2,15 +2,46 @@
 
 ## Replication steps
 
-### CodeFlowLM (RQ 1)
+### RQ1: Continual JIT-SDP with PLMs
 
-Hardware requirements: A100 or other GPU with at least 24GB OF VRAM for CodeT5+ with batch size = 16. This notebook was tested with A100 GPU on Google Colab environment. So, the instructions in this replication package are well suited to a Colab env.
+| Step | Command | Environment | Output |
+|---|---|---|---|
+| Fetch dependencies (codeflowlm, PEFT4CC, pinned commits) | `make setup-rq1` | CodeFlowLM | `deps/` |
+| CodeFlowLM, 3 configurations x 19 projects x 5 seeds (WP and CP) | `make rq1-codeflowlm` | CodeFlowLM, GPU | `results/rq1/runs/<wp\|cp>/codeflowlm.csv` |
+| BORB, 5 base learners x 19 projects x 5 seeds (WP and CP) | `make rq1-borb BORB_PYTHON=...` | jit-sdp-nn | `results/rq1/runs/<wp\|cp>/borb.csv` |
+| HumLa and Eco-HumLa, 19 projects x 5 seeds (WP and CP) | `make rq1-humla HUMLA_PYTHON=...` | HumLa | `results/rq1/runs/<wp\|cp>/humla.csv` |
+| Friedman, Iman-Davenport, Nemenyi, Kendall's W, Cliff's delta (Section 5.1) | `make rq1-stats` | any (pandas, scipy) | console + `results/rq1/cd_<wp\|cp>.png` |
+| Same tests over the means published in Tables 11 and 12 | `make rq1-stats-paper` | any (pandas, scipy) | console |
 
-1. Upload or open in Colab [continual_jitsdp/CodeFlowLM-WP.ipynb](continual_jitsdp/CodeFlowLM-WP.ipynb) for within-project (WP) learning, and [continual_jitsdp/CodeFlowLM-CP.ipynb](continual_jitsdp/CodeFlowLM-CP.ipynb) for cross-project (CP) learning. Each file runs a single execution for each of 19 projects with a default/fixed random seed and different combinations of base learner (CodeT5+/UniXCoder) + fine-tuning technique (LoRA/Preffix fine tuning - PreT). In current version, the tested combinations include CodeT5+ + LoRA, UniXCoder + PreT and UniXCoder + LoRA (tested only in WP setting).
-2. Change execution environment to A100 GPU or equivalent, if you wish ro train CodeFlowLM with CodeT5+ base learner.  If you prefer UniXCoder, T4 GPU is sufficient.  Notice: it may be necessary to buy credits.
-3. Run the notebook in Colab environment.  It will download the necessary repositories with code and data, including this repository.
+`make rq1` runs all of the above in sequence. Every script accepts `--projects`, `--seeds` and `--dry-run`
+for partial or quick runs (e.g. `python scripts/rq1_codeflowlm.py --setting wp --config CodeT5+-LoRA --projects gora --seeds 33`),
+and skips combinations whose results already exist, so an interrupted run is resumed by repeating the command.
+Each run writes one row per (method, project, seed) with the prequential G-mean and |R1 - R0| (fading factor 0.99).
 
-The following random seeds were used to run the experiments repetitions: [33 (default), 23, 99, 72, 22].  To fix the seed, add seed parameter to codeflowlm.train.train_project_with_lat_ver() function.
+**Results already included.** `results/rq1/runs/<wp|cp>/borb.csv` contains the BORB runs used in the paper
+(exported with `scripts/rq1_borb.py export` from the original MLflow folders), and `results/rq1/paper/<wp|cp>.csv`
+contains the per-project means of Tables 11 and 12; `make rq1-stats-paper` reproduces every statistic reported in
+Section 5.1 from them. In commons-lang (CP), the CodeT5+ and UniXCoder-PreT G-means are stored with five decimals
+(0.67492 / 0.67496), as explained in the note of Table 12.
+
+**Environments.**
+- *CodeFlowLM*: A100 or another GPU with at least 24 GB of VRAM for CodeT5+ with batch size 16 (a T4 is enough for
+  UniXCoder). Tested on Google Colab. `make setup-rq1` installs `envs/requirements-rq1-codeflowlm.txt`.
+  Each run is limited to 10 hours by codeflowlm; rerun the same command to resume from the last training step.
+- *BORB*: [monilouise/jit-sdp-nn](https://github.com/monilouise/jit-sdp-nn) (commit `eb286ee`), a fork of
+  [dinaldoap/jit-sdp-nn](https://github.com/dinaldoap/jit-sdp-nn) adapted to JIT-Defects4J, in `baselines/jit-sdp-nn`.
+  Install it with `conda env create --name borb --file conda.yml` and `pip install -r requirements.lock` inside that folder.
+  Default BORB hyperparameters are used (MLP with 80 epochs).
+- *HumLa / Eco-HumLa*: [HumLa-fse2023](https://github.com/sunnysong14/HumLa-fse2023) adapted to JIT-Defects4J and to
+  the CP setting, in `baselines/HumLa-fse2023` (Python 3.9, numpy, scikit-learn, scikit-multiflow 0.5.3).
+  The parameters selected by grid search over the first 50 commits of each project are in
+  `codes/data_stream/para_bst_30sd.csv`.
+
+Seeds: 33 (default), 23, 99, 72 and 22 for CodeFlowLM and BORB; HumLa uses its own seeds 0-4.
+
+The original Colab notebooks are still available:
+[continual_jitsdp/CodeFlowLM-WP.ipynb](continual_jitsdp/CodeFlowLM-WP.ipynb) and
+[continual_jitsdp/CodeFlowLM-CP.ipynb](continual_jitsdp/CodeFlowLM-CP.ipynb) (one seed per notebook).
 
 #### Inference time measurements
 
