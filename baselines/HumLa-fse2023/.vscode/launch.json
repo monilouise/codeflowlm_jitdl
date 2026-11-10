@@ -1,0 +1,29 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python: run_RQs.py",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/codes/run_RQs.py",
+            "cwd": "${workspaceFolder}/codes",
+            "env": {
+                "PYTHONPATH": "${workspaceFolder}"
+            },
+            "console": "integratedTerminal",
+            "justMyCode": true
+        },
+        {
+            "name": "Python: current file (HumLa)",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${file}",
+            "cwd": "${workspaceFolder}/codes",
+            "env": {
+                "PYTHONPATH": "${workspaceFolder}"
+            },
+            "console": "integratedTerminal",
+            "justMyCode": true
+        }
+    ]
+}

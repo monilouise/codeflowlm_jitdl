@@ -1,0 +1,20 @@
+name: jitsdp
+
+conda_env: conda.yml
+
+entry_points:
+  main:
+    parameters:
+        end: {default: None}
+        ihf-n-estimators: {default: 20}
+        lr-n-epochs: {default: 50}
+        mlp-n-epochs: {default: 50}
+        nb-n-updates: {default: 50}
+        irf-n-estimators: {default: 100}
+    command: 'conda env update --file conda.yml --prune && pip install -r requirements.txt && jitsdp borb --end {end} --ihf-n-estimators {ihf-n-estimators} --lr-n-epochs {lr-n-epochs} --mlp-n-epochs {mlp-n-epochs} --nb-n-updates {nb-n-updates} --irf-n-estimators {irf-n-estimators}'
+
+  orb:
+    parameters:
+        end: {default: None}
+        oht-n-estimators: {default: 20}
+    command: 'conda env update --file conda.yml --prune && pip install -r requirements.txt && jitsdp orb --end {end} --oht-n-estimators {oht-n-estimators}'
