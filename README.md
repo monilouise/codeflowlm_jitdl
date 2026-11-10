@@ -30,8 +30,7 @@ Section 5.1 from them. In commons-lang (CP), the CodeT5+ and UniXCoder-PreT G-me
   UniXCoder). Tested on Google Colab. `make setup-rq1` installs `envs/requirements-rq1-codeflowlm.txt`.
   Each run is limited to 10 hours by codeflowlm; rerun the same command to resume from the last training step.
 - *BORB*: the code is included in `baselines/jit-sdp-nn`, a copy of
-  [dinaldoap/jit-sdp-nn](https://github.com/dinaldoap/jit-sdp-nn) adapted to JIT-Defects4J (also published as
-  [monilouise/jit-sdp-nn](https://github.com/monilouise/jit-sdp-nn); the copy here only adds timing logs).
+  [dinaldoap/jit-sdp-nn](https://github.com/dinaldoap/jit-sdp-nn) adapted to JIT-Defects4J.
   Install it with `conda env create --name borb --file conda.yml` and `pip install -r requirements.lock` inside that folder.
   Default BORB hyperparameters are used (MLP with 80 epochs).
 - *HumLa / Eco-HumLa*: the code is included in `baselines/HumLa-fse2023`, a copy of
