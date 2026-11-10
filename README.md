@@ -19,7 +19,8 @@ and skips combinations whose results already exist, so an interrupted run is res
 Each run writes one row per (method, project, seed) with the prequential G-mean and |R1 - R0| (fading factor 0.99).
 
 **Results already included.** `results/rq1/runs/<wp|cp>/borb.csv` contains the BORB runs used in the paper
-(exported with `scripts/rq1_borb.py export` from the original MLflow folders), and `results/rq1/paper/<wp|cp>.csv`
+(exported with `scripts/rq1_borb.py export` from the original MLflow folders), `results/rq1/runs/<wp|cp>/humla.csv`
+the HumLa and Eco-HumLa runs produced by `scripts/rq1_humla.py`, and `results/rq1/paper/<wp|cp>.csv`
 contains the per-project means of Tables 11 and 12; `make rq1-stats-paper` reproduces every statistic reported in
 Section 5.1 from them. In commons-lang (CP), the CodeT5+ and UniXCoder-PreT G-means are stored with five decimals
 (0.67492 / 0.67496), as explained in the note of Table 12.
@@ -28,12 +29,14 @@ Section 5.1 from them. In commons-lang (CP), the CodeT5+ and UniXCoder-PreT G-me
 - *CodeFlowLM*: A100 or another GPU with at least 24 GB of VRAM for CodeT5+ with batch size 16 (a T4 is enough for
   UniXCoder). Tested on Google Colab. `make setup-rq1` installs `envs/requirements-rq1-codeflowlm.txt`.
   Each run is limited to 10 hours by codeflowlm; rerun the same command to resume from the last training step.
-- *BORB*: [monilouise/jit-sdp-nn](https://github.com/monilouise/jit-sdp-nn) (commit `eb286ee`), a fork of
-  [dinaldoap/jit-sdp-nn](https://github.com/dinaldoap/jit-sdp-nn) adapted to JIT-Defects4J, in `baselines/jit-sdp-nn`.
+- *BORB*: the code is included in `baselines/jit-sdp-nn`, a copy of
+  [dinaldoap/jit-sdp-nn](https://github.com/dinaldoap/jit-sdp-nn) adapted to JIT-Defects4J (also published as
+  [monilouise/jit-sdp-nn](https://github.com/monilouise/jit-sdp-nn); the copy here only adds timing logs).
   Install it with `conda env create --name borb --file conda.yml` and `pip install -r requirements.lock` inside that folder.
   Default BORB hyperparameters are used (MLP with 80 epochs).
-- *HumLa / Eco-HumLa*: [HumLa-fse2023](https://github.com/sunnysong14/HumLa-fse2023) adapted to JIT-Defects4J and to
-  the CP setting, in `baselines/HumLa-fse2023` (Python 3.9, numpy, scikit-learn, scikit-multiflow 0.5.3).
+- *HumLa / Eco-HumLa*: the code is included in `baselines/HumLa-fse2023`, a copy of
+  [HumLa-fse2023](https://github.com/sunnysong14/HumLa-fse2023) adapted to JIT-Defects4J and to
+  the CP setting (Python 3.9, numpy, scikit-learn, scikit-multiflow 0.5.3).
   The parameters selected by grid search over the first 50 commits of each project are in
   `codes/data_stream/para_bst_30sd.csv`.
 
