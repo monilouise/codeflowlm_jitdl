@@ -9,3 +9,6 @@
 /deps/
 /results/rq1/work/
 __pycache__/
+/results/rq2/work/
+# debug dumps written by jit-sdp-nn at every training step
+/baselines/jit-sdp-nn/df_*.csv

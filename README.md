@@ -31,8 +31,20 @@ Section 5.1 from them. In commons-lang (CP), the CodeT5+ and UniXCoder-PreT G-me
   Each run is limited to 10 hours by codeflowlm; rerun the same command to resume from the last training step.
 - *BORB*: the code is included in `baselines/jit-sdp-nn`, a copy of
   [dinaldoap/jit-sdp-nn](https://github.com/dinaldoap/jit-sdp-nn) adapted to JIT-Defects4J.
-  Install it with `conda env create --name borb --file conda.yml` and `pip install -r requirements.lock` inside that folder.
-  Default BORB hyperparameters are used (MLP with 80 epochs).
+  Default BORB hyperparameters are used (MLP with 80 epochs). Create the environment inside that folder:
+  ```bash
+  conda env create --name borb --file conda.yml
+  conda run --name borb python -m pip install "pip==24.0" "setuptools<68" "wheel==0.37.1"
+  conda run --name borb pip install -r requirements.lock
+  conda run --name borb pip install torch==1.4.0+cpu -f https://download.pytorch.org/whl/torch_stable.html
+  conda run --name borb jitsdp --help
+  ```
+  The second line is needed because the pip shipped with Python 3.7 would otherwise fetch a `setuptools` that requires
+  Python 3.8 (if the editable install of `jitsdp` still fails, add `--no-build-isolation` to the third line).
+  `torch` is commented out in `requirements.lock` but is required (MLP); if the wheel above is not found, use
+  `conda install --name borb pytorch=1.4.0 cpuonly -c pytorch`. Then run, from the repository root,
+  `make rq1-borb BORB_PYTHON=<conda envs folder>/borb/python.exe` (`.../borb/bin/python` on Linux/macOS);
+  the environment does not need to be activated.
 - *HumLa / Eco-HumLa*: the code is included in `baselines/HumLa-fse2023`, a copy of
   [HumLa-fse2023](https://github.com/sunnysong14/HumLa-fse2023) adapted to JIT-Defects4J and to
   the CP setting (Python 3.9, numpy, scikit-learn, scikit-multiflow 0.5.3).
@@ -49,10 +61,33 @@ The original Colab notebooks are still available:
 
 [continual_jitsdp/PredictionTimesTest.ipynb](continual_jitsdp/PredictionTimesTest.ipynb): tests CodeFlowLM inference time for a single prediction with both base learners (CodeT5+ and UniXCoder).
 
-### Defect Localization (RQs 2 and 3)
+### RQ2: LLMs for JIT-DL
 
-- [jit-dl-llms/JIT-DL-GPT-5.ipynb](jit-dl-llms/JIT-DL-GPT-5.ipynb): Quantitative and qualitative experiments with GPT-5, the LLM with the best observed metrics in our experiments.
-- response-gpt-5_exec-*.pkl files: Different runs for the same LLM
+| Step | Command | Requirements | Output |
+|---|---|---|---|
+| LLM rows of Table 5 from the stored answers | `make rq2` | pandas, scikit-learn | console + `results/rq2/llm_runs.csv`, `results/rq2/summary.csv` |
+| Query GPT-5 (5 runs), Gemini 2.5 Pro and Claude Sonnet 4.5 again, then evaluate | `make rq2-llm` | `openai`, `google-genai`, `anthropic`; API keys | `results/rq2/responses/`, `results/rq2/rerun/` |
+| Attention-based baselines CodeT5+ and UniXCoder, 5 seeds (PEFT4CC `--do_locate_defects`) | `make rq2-attention` | GPU, `make setup-rq1` | `results/rq2/baselines/*.csv` (added to `results/rq2/summary.csv` by `make rq2`) |
+
+The published values of Table 5 are in `results/rq2/paper/table5.csv`.
+
+The LLMs receive the prompt of Listing 1 ([jit-dl-llms/prompt_listing1.txt](jit-dl-llms/prompt_listing1.txt), kept
+verbatim) followed by the diff of each of the 221 commits correctly predicted as defect-inducing by CodeT5+
+(`data/results.csv`). The answers used in the paper are stored in `jit-dl-llms/responses-*.pkl`
+(`responses-gpt-5_exec-0..4.pkl` are the five GPT-5 runs). [scripts/jitdl_lib.py](scripts/jitdl_lib.py) contains
+the answer parsing, the alignment between dataset lines and the lines cited by the LLM, and the line-level metrics,
+ported from [jit-dl-llms/JIT-DL-GPT-5.ipynb](jit-dl-llms/JIT-DL-GPT-5.ipynb) without changes in logic.
+Use `python scripts/rq2_llm.py --model <gpt-5|claude|gemini> --limit 3` for a quick check of the API calls, and
+`--dry-run` to print the first prompt.
+
+Notes:
+- LLM answers are not deterministic, so new queries will give slightly different values.
+- Claude Sonnet 4.5 (`claude-sonnet-4-5-20250929`) is scheduled for retirement by Anthropic on 2026-11-30; after that,
+  its row can only be reproduced from the stored answers.
+- IFA depends on the order of tied lines (most lines of a commit get score 0), and the sorting of ties may vary
+  with the numpy version and CPU. With numpy 2.4 the stored answers reproduce the published Top-5, Recall@20% and
+  Effort@20% of every model (Top-10 within 0.001); the mean IFA is up to 0.05 lower, because of the tie order of
+  commit `94faa31` (commons-lang, 312 changed lines, 308 of them with score 0).
 
 #### False-positives analysis
 

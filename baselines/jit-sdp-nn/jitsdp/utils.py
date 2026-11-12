@@ -34,7 +34,7 @@ def setup_and_run(config, frun):
     logging.getLogger('').handlers = []
     dir = pathlib.Path('logs')
     mkdir(dir)
-    log = '{}-{}.log'.format(meta_model, datetime.now())
+    log = '{}-{}.log'.format(meta_model, str(datetime.now()).replace(':', '-'))  # ':' is invalid in Windows file names
     log = log.replace(' ', '-')
     log = dir / log
     logging.basicConfig(filename=log,

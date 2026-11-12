@@ -39,3 +39,25 @@ rq1-stats:
 # Same tests over the per-project means published in Tables 11 and 12 (no training needed).
 rq1-stats-paper:
 	$(foreach s,$(SETTINGS),$(PYTHON) scripts/rq1_stats.py results/rq1/paper/$(s).csv &&) true
+
+# ---------------------------------------------------------------- RQ2
+.PHONY: rq2 rq2-llm rq2-metrics rq2-attention
+
+# Table 5 (LLM rows) from the answers stored in jit-dl-llms/ (no API key needed).
+rq2: rq2-metrics
+
+rq2-metrics:
+	$(PYTHON) scripts/rq2_metrics.py
+
+# Query the LLMs again (API keys required; answers go to results/rq2/responses/), then evaluate them.
+rq2-llm:
+	$(PYTHON) scripts/rq2_llm.py --model gpt-5 --runs 5
+	$(PYTHON) scripts/rq2_llm.py --model gemini
+	$(PYTHON) scripts/rq2_llm.py --model claude
+	$(PYTHON) scripts/rq2_metrics.py --responses-dir results/rq2/responses --out-dir results/rq2/rerun
+
+# Attention-based baselines CodeT5+ and UniXCoder (GPU; needs `make setup-rq1` for deps/PEFT4CC).
+# Results go to results/rq2/baselines/ and are included in the next `make rq2`.
+rq2-attention:
+	$(PYTHON) scripts/rq2_attention.py --config CodeT5+-LoRA
+	$(PYTHON) scripts/rq2_attention.py --config UniXCoder-PreT

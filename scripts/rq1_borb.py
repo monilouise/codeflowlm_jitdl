@@ -19,6 +19,7 @@ Examples:
 import argparse
 import glob
 import os
+import shutil
 import subprocess
 import sys
 
@@ -35,8 +36,19 @@ def default_mlruns(setting):
     return os.path.join(RESULTS_DIR, "work", "borb", f"mlruns-{setting}")
 
 
+def jitsdp_executable():
+    """The `jitsdp` entry point of the environment running this script (its Scripts/ or bin/ folder
+    is not on PATH when the interpreter is called by its full path), falling back to PATH."""
+    folder = os.path.dirname(sys.executable)
+    for candidate in (os.path.join(folder, "Scripts", "jitsdp.exe"), os.path.join(folder, "jitsdp.exe"),
+                      os.path.join(folder, "jitsdp")):
+        if os.path.isfile(candidate):
+            return candidate
+    return shutil.which("jitsdp") or "jitsdp"
+
+
 def borb_command(model, project, seed, setting):
-    cmd = ["jitsdp", "borb", "--cross-project", "1" if setting == "cp" else "0", "--model", model]
+    cmd = [jitsdp_executable(), "borb", "--cross-project", "1" if setting == "cp" else "0", "--model", model]
     if model == "mlp":
         cmd += ["--mlp-n-epochs", str(BORB_MLP_EPOCHS)]
     return cmd + ["--dataset", project, "--seed", str(seed)]
@@ -76,6 +88,12 @@ def finished_runs(mlruns):
 def cmd_run(args):
     mlruns = os.path.abspath(args.mlruns or default_mlruns(args.setting))
     env = dict(os.environ, MLFLOW_TRACKING_URI="file:" + mlruns.replace(os.sep, "/"))
+    # Like `conda activate`: without the env's DLL folders on PATH, Windows fails to load _ssl.
+    prefix = os.path.dirname(sys.executable)
+    env_dirs = [os.path.join(prefix, *d) for d in
+                [(), ("Library", "mingw-w64", "bin"), ("Library", "usr", "bin"), ("Library", "bin"), ("Scripts",),
+                 ("bin",)]]
+    env["PATH"] = os.pathsep.join([d for d in env_dirs if os.path.isdir(d)] + [env.get("PATH", "")])
     done = set()
     if os.path.isdir(mlruns) and not args.force:
         df = finished_runs(mlruns)
@@ -96,6 +114,7 @@ def cmd_run(args):
 
     if not args.dry_run:
         args.mlruns = [mlruns]
+        args.merge = True
         cmd_export(args)
 
 
@@ -113,6 +132,11 @@ def cmd_export(args):
         print(f"Ignored {n - len(df)} repeated run(s), keeping the latest of each combination.")
     out = args.out or os.path.join(RESULTS_DIR, "runs", args.setting, "borb.csv")
     os.makedirs(os.path.dirname(os.path.abspath(out)), exist_ok=True)
+    if getattr(args, "merge", False) and os.path.exists(out):
+        # `run` may cover only some projects/seeds: keep the other rows already in the CSV.
+        old = pd.read_csv(out)
+        old = old[~old.set_index(key).index.isin(df.set_index(key).index)]
+        df = pd.concat([old[RESULT_COLUMNS], df[RESULT_COLUMNS]], ignore_index=True)
     df[RESULT_COLUMNS].sort_values(key).to_csv(out, index=False)
     print(f"{len(df)} runs written to {out}")
     counts = df.groupby("method")["project"].nunique()
