@@ -6,29 +6,8 @@ import shutil
 VERBOSE, IS_PLOT = 0, False  # for run_HumLa
 print("Please note that 100 runs with 10k test steps can take lots of time")
 print("So one can set smaller N_TEST and SEEDs to have a quick check")
-#N_TEST, SEEDS = 1720, range(5)  # setup in the manuscript (ant-ivy)
-#N_TEST, SEEDS = 732, range(5)  # setup in the manuscript (commons-bcel)
-#N_TEST, SEEDS = 727, range(5)  # setup in the manuscript (commons-codec)
-#N_TEST, SEEDS = 1023, range(5)  # setup in the manuscript (commons-net)
-#N_TEST, SEEDS = 812, range(5)  # setup in the manuscript (giraph)
-#N_TEST, SEEDS = 534, range(5)  # setup in the manuscript (gora)
-#N_TEST, SEEDS = 1064, range(5)  # setup in the manuscript (opennlp)
-#N_TEST, SEEDS = 996, range(5)  # setup in the manuscript (commons-digester) (987 CP)
-#N_TEST, SEEDS = 774, range(5)  # setup in the manuscript (commons-jcs)
-#N_TEST, SEEDS = 578, range(5)  # setup in the manuscript (commons-validator)
-#N_TEST, SEEDS = 1687, range(5)  # setup in the manuscript (commons-collections) (1658 CP)
-#N_TEST, SEEDS = 2822, range(5)  # setup in the manuscript (commons-lang)
-#N_TEST, SEEDS = 1619, range(5)  # setup in the manuscript (commons-compress)
-#N_TEST, SEEDS = 3712, range(5)  # setup in the manuscript (commons-math)
-#N_TEST, SEEDS = 521, range(5)  # setup in the manuscript (commons-scxml)
-#N_TEST, SEEDS = 572, range(5)  # setup in the manuscript (commons-beanutils) (560 CP)
-#N_TEST, SEEDS = 1082, range(5)  # setup in the manuscript (parquet-mr)
-#N_TEST, SEEDS = 1740, range(5)  # setup in the manuscript (commons-configuration)
-#N_TEST, SEEDS = 975, range(5)  # setup in the manuscript (commons-vfs)
-N_TEST, SEEDS = 23690, range(5)  # setup in the manuscript (all_projects)
 
-#N_TEST, SEEDS = 1000, range(2)  # for a quick run
-#N_TEST, SEEDS = 611, range(100)
+N_TEST, SEEDS = 1000, range(2)  # for a quick run
 
 def RQ1(str_RQ1="RQ1.1", project_id=0, target_project_id=None):
     """ HumLa
@@ -125,19 +104,17 @@ def RQ2(str_RQ2="RQ2.1", project_id=0, target_project_id=None):
     else:
         raise Exception("Error in str_RQ=%s." % str_RQ2)
 
-#TODO: Acrescentar |R1-R0| como métrica
 if __name__ == "__main__":
     project_id = 33
     
     for i in range(21, 33):
         target_project_id = i
-        #target_project_id = None
         RQ1("RQ1.1", project_id, target_project_id=target_project_id)
-        #RQ1("RQ1.2", project_id) #tirar
-        #RQ1("RQ1.3", project_id) #tirar
-        #RQ2("RQ2.1", project_id, target_project_id=target_project_id)
-        #RQ2("RQ2.2", project_id)
-        #RQ2("RQ2.3", project_id)
+        RQ1("RQ1.2", project_id) 
+        RQ1("RQ1.3", project_id) 
+        RQ2("RQ2.1", project_id, target_project_id=target_project_id)
+        RQ2("RQ2.2", project_id)
+        RQ2("RQ2.3", project_id)
         print("\nSuccess on %s\n" % datetime.today())
         dir_to_delete = r"C:\Users\Monique\Documents\UFPE\Doutorado\Tese\HumLa-fse2023\results\rslt.save\all_projects"
         if shutil.os.path.isdir(dir_to_delete):
