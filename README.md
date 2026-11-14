@@ -81,6 +81,19 @@ ported from [jit-dl-llms/JIT-DL-GPT-5.ipynb](jit-dl-llms/JIT-DL-GPT-5.ipynb) wit
 Use `python scripts/rq2_llm.py --model <gpt-5|claude|gemini> --limit 3` for a quick check of the API calls, and
 `--dry-run` to print the first prompt.
 
+**API keys.** `scripts/rq2_llm.py` reads the keys from environment variables (no key is stored in the repository and
+no `.env` file is loaded):
+
+| Model | Environment variable |
+|---|---|
+| `--model gpt-5` (OpenAI Responses API) | `OPENAI_API_KEY` |
+| `--model gpt-5 --openrouter` (`openai/gpt-5` via OpenRouter) | `OPENROUTER_API_KEY` |
+| `--model claude` | `ANTHROPIC_API_KEY` |
+| `--model gemini` | `GEMINI_API_KEY` (or `GOOGLE_API_KEY`) |
+
+Set them in the same terminal before running, e.g. `export OPENAI_API_KEY=...` (bash) or
+`$env:OPENAI_API_KEY = "..."` (PowerShell). Only the key of the model being queried is needed.
+
 Notes:
 - LLM answers are not deterministic, so new queries will give slightly different values.
 - Claude Sonnet 4.5 (`claude-sonnet-4-5-20250929`) is scheduled for retirement by Anthropic on 2026-11-30; after that,
