@@ -12,8 +12,9 @@
 | HumLa and Eco-HumLa, 19 projects x 5 seeds (WP and CP) | `make rq1-humla HUMLA_PYTHON=...` | HumLa | `results/rq1/runs/<wp\|cp>/humla.csv` |
 | Friedman, Iman-Davenport, Nemenyi, Kendall's W, Cliff's delta (Section 5.1) | `make rq1-stats` | any (pandas, scipy) | console + `results/rq1/cd_<wp\|cp>.png` |
 | Same tests over the means published in Tables 11 and 12 | `make rq1-stats-paper` | any (pandas, scipy) | console |
+| Runs all of the above in sequence | `make rq1` | all above | all above |
 
-`make rq1` runs all of the above in sequence. Every script accepts `--projects`, `--seeds` and `--dry-run`
+Every script accepts `--projects`, `--seeds` and `--dry-run`
 for partial or quick runs (e.g. `python scripts/rq1_codeflowlm.py --setting wp --config CodeT5+-LoRA --projects gora --seeds 33`),
 and skips combinations whose results already exist, so an interrupted run is resumed by repeating the command.
 Each run writes one row per (method, project, seed) with the prequential G-mean and |R1 - R0| (fading factor 0.99).
