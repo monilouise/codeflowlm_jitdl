@@ -43,7 +43,7 @@ rq1-stats-paper:
 	$(PYTHON) scripts/rq1_stats.py results/rq1/paper/cp.csv
 
 # ---------------------------------------------------------------- RQ2
-.PHONY: rq2 rq2-llm rq2-metrics rq2-attention
+.PHONY: rq2 rq2-llm rq2-metrics rq2-attention rq2-jitsmart
 
 # Table 5 (LLM rows) from the answers stored in jit-dl-llms/ (no API key needed).
 rq2: rq2-metrics
@@ -63,3 +63,7 @@ rq2-llm:
 rq2-attention:
 	$(PYTHON) scripts/rq2_attention.py --config CodeT5+-LoRA
 	$(PYTHON) scripts/rq2_attention.py --config UniXCoder-PreT
+
+# JIT-SmartATTN baseline (GPU): JIT-Smart trained for JIT-DP only, lines ranked by attention.
+rq2-jitsmart:
+	$(PYTHON) scripts/rq2_jitsmart.py

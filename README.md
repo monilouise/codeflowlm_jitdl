@@ -69,8 +69,11 @@ The original Colab notebooks are still available:
 | LLM rows of Table 5 from the stored answers | `make rq2` | pandas, scikit-learn | console + `results/rq2/llm_runs.csv`, `results/rq2/summary.csv` |
 | Query GPT-5 (5 runs), Gemini 2.5 Pro and Claude Sonnet 4.5 again, then evaluate | `make rq2-llm` | `openai`, `google-genai`, `anthropic`; API keys | `results/rq2/responses/`, `results/rq2/rerun/` |
 | Attention-based baselines CodeT5+ and UniXCoder, 5 seeds (PEFT4CC `--do_locate_defects`) | `make rq2-attention` | GPU, `make setup-rq1` | `results/rq2/baselines/*.csv` (added to `results/rq2/summary.csv` by `make rq2`) |
+| JIT-SmartATTN baseline, 5 seeds ([baselines/JIT-Smart](baselines/JIT-Smart), changes listed in its README) | `make rq2-jitsmart` | GPU (about 5 h per seed on Colab), PyTorch, `transformers` | `results/rq2/baselines/JIT-SmartATTN.csv` |
 
 The published values of Table 5 are in `results/rq2/paper/table5.csv`.
+`results/rq2/baselines/JIT-SmartATTN.csv` contains the five JIT-SmartATTN runs reported in the paper
+(seeds 33, 23, 99, 72 and 22, trained on Google Colab); `make rq2` adds them to Table 5.
 
 The LLMs receive the prompt of Listing 1 ([jit-dl-llms/prompt_listing1.txt](jit-dl-llms/prompt_listing1.txt), kept
 verbatim) followed by the diff of each of the 221 commits correctly predicted as defect-inducing by CodeT5+
