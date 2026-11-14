@@ -607,7 +607,9 @@ def main(args):
     special_tokens_dict = {'additional_special_tokens': ["[ADD]", "[DEL]"]}
     tokenizer.add_special_tokens(special_tokens_dict)
 
-    model = RobertaModel.from_pretrained(args.model_name_or_path, config=config)
+    # CodeFlowLM change 6: eager attention, since the default SDPA attention of recent transformers
+    # releases returns no attention weights and the line-level ranking needs them
+    model = RobertaModel.from_pretrained(args.model_name_or_path, config=config, attn_implementation="eager")
 
     model.resize_token_embeddings(len(tokenizer))
     logger.info("Training/evaluation parameters %s", args)

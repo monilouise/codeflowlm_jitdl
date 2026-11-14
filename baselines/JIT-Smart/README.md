@@ -17,6 +17,10 @@ Changes, all marked with `# CodeFlowLM change N` in the code:
 5. `JITSmart/my_util.py`, `get_line_level_metrics()`: the normalized scores are flattened with `.ravel()` before
    `float()`, which numpy 2.4 no longer accepts on 1-element arrays (same values; not needed in the
    Colab environment used in the paper).
+6. `JITSmart/concat/run.py`: the encoder is loaded with `attn_implementation="eager"`. With recent `transformers` releases
+   (e.g., the Colab runtime of November 2026) the default SDPA attention returns no attention weights, and the
+   test fails with `IndexError: tuple index out of range` in `model.py`. Eager attention computes the same
+   weights the code used in the paper's runs.
 
 The commit-level data are `data/changes_*_lst.pkl` and `data/features_*.pkl` of the CodeFlowLM repository (the
 features are identical to `data/jitfine/features_*.pkl` of `data/data.zip`); the line labels are

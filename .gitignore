@@ -16,3 +16,5 @@ __pycache__/
 /baselines/JIT-Smart/data/data.zip
 # baselines of the JIT-Smart paper (CC2Vec, DeepJIT, JITLine, ...), not used by CodeFlowLM
 /baselines/JIT-Smart/baselines/
+# baselines of the JIT-Fine paper (CC2Vec, DeepJIT, JITLine, ...), not used by CodeFlowLM
+/baselines/JIT-Fine/baselines/
