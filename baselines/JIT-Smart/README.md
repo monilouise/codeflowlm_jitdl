@@ -23,6 +23,8 @@ features are identical to `data/jitfine/features_*.pkl` of `data/data.zip`); the
 `JITSmart/process and label defect code lines/*_buggy_commit_lines_df.pkl`.
 `data/data.zip` (72 MB) is not used and is not versioned in the CodeFlowLM repository; it can be downloaded from
 the original repository if needed.
+The `baselines/` folder of JIT-Smart (CC2Vec, DeepJIT, Deeper, JITLine, LApredict, ngram; 57 MB) is not used
+either and is not versioned.
 
 ---
 

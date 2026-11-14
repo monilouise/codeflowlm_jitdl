@@ -14,3 +14,5 @@ __pycache__/
 /baselines/jit-sdp-nn/df_*.csv
 # JIT-Smart raw data archive (not used: scripts/rq2_jitsmart.py reads data/ and the line labels in JITSmart/)
 /baselines/JIT-Smart/data/data.zip
+# baselines of the JIT-Smart paper (CC2Vec, DeepJIT, JITLine, ...), not used by CodeFlowLM
+/baselines/JIT-Smart/baselines/
