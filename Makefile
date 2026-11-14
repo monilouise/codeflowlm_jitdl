@@ -11,7 +11,6 @@ PYTHON ?= python
 BASH ?= bash
 BORB_PYTHON ?= $(PYTHON)
 HUMLA_PYTHON ?= $(PYTHON)
-SETTINGS := wp cp
 
 .PHONY: setup-rq1 rq1 rq1-codeflowlm rq1-borb rq1-humla rq1-stats rq1-stats-paper
 
@@ -26,19 +25,22 @@ rq1-codeflowlm:
 	$(PYTHON) scripts/rq1_codeflowlm.py --setting cp --config all
 
 rq1-borb:
-	$(foreach s,$(SETTINGS),$(BORB_PYTHON) scripts/rq1_borb.py run --setting $(s) &&) true
+	$(BORB_PYTHON) scripts/rq1_borb.py run --setting wp
+	$(BORB_PYTHON) scripts/rq1_borb.py run --setting cp
 
 rq1-humla:
-	$(foreach s,$(SETTINGS),$(HUMLA_PYTHON) scripts/rq1_humla.py --setting $(s) &&) true
+	$(HUMLA_PYTHON) scripts/rq1_humla.py --setting wp
+	$(HUMLA_PYTHON) scripts/rq1_humla.py --setting cp
 
 # Friedman / Iman-Davenport / Nemenyi / Kendall's W / Cliff's delta over the runs in results/rq1/runs/.
 rq1-stats:
-	$(foreach s,$(SETTINGS),$(PYTHON) scripts/rq1_stats.py "results/rq1/runs/$(s)/*.csv" --setting $(s) \
-		--cd-plot results/rq1/cd_$(s).png &&) true
+	$(PYTHON) scripts/rq1_stats.py "results/rq1/runs/wp/*.csv" --setting wp --cd-plot results/rq1/cd_wp.png
+	$(PYTHON) scripts/rq1_stats.py "results/rq1/runs/cp/*.csv" --setting cp --cd-plot results/rq1/cd_cp.png
 
 # Same tests over the per-project means published in Tables 11 and 12 (no training needed).
 rq1-stats-paper:
-	$(foreach s,$(SETTINGS),$(PYTHON) scripts/rq1_stats.py results/rq1/paper/$(s).csv &&) true
+	$(PYTHON) scripts/rq1_stats.py results/rq1/paper/wp.csv
+	$(PYTHON) scripts/rq1_stats.py results/rq1/paper/cp.csv
 
 # ---------------------------------------------------------------- RQ2
 .PHONY: rq2 rq2-llm rq2-metrics rq2-attention
