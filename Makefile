@@ -62,7 +62,7 @@ rq2-llm:
 # Results go to results/rq2/baselines/ and are included in the next `make rq2`.
 rq2-attention:
 	$(PYTHON) scripts/rq2_attention.py --config CodeT5+-LoRA
-	$(PYTHON) scripts/rq2_attention.py --config UniXCoder-PreT
+	$(PYTHON) scripts/rq2_attention.py --config UniXCoder-LoRA
 
 # JIT-SmartATTN baseline (GPU): JIT-Smart trained for JIT-DP only, lines ranked by attention.
 rq2-jitsmart:

@@ -20,6 +20,7 @@ clone_pinned() {
 }
 
 clone_pinned https://github.com/monilouise/codeflowlm.git codeflowlm 2b86a06
-clone_pinned https://github.com/monilouise/PEFT4CC.git PEFT4CC c86785b
+# ae42f8b = c86785b + the line-localization arguments of util.py (--only_adds True/False, --loc_*) used by RQ2
+clone_pinned https://github.com/monilouise/PEFT4CC.git PEFT4CC ae42f8b
 
 pip install -r "$ROOT/envs/requirements-rq1-codeflowlm.txt"
