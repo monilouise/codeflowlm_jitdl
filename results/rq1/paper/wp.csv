@@ -19,7 +19,7 @@ HumLa,wp,commons-beanutils,mean,0.286,0.756
 Eco-HumLa,wp,commons-beanutils,mean,0.284,0.755
 UniXCoder-PreT,wp,commons-codec,mean,0.500,0.377
 UniXCoder-LoRA,wp,commons-codec,mean,0.490,0.437
-CodeT5+-LoRA,wp,commons-codec,mean,0.506,0.265
+CodeT5+-LoRA,wp,commons-codec,mean,0.508,0.263
 BORB,wp,commons-codec,mean,0.528,0.330
 HumLa,wp,commons-codec,mean,0.415,0.623
 Eco-HumLa,wp,commons-codec,mean,0.554,0.440
