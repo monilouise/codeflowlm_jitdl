@@ -84,8 +84,9 @@ same notebook; the November 2026 steps ran on the Colab runtime of that time, wi
 `make rq2-attention` uses the arguments of those runs: CodeT5+ with batch size 8, `--hidden_size 1024`,
 `--loc_last_k_layers 3 --loc_attn_temp 0.85` (only added lines); UniXCoder with batch size 16,
 `--only_adds False --loc_deleted_weight 0.5` (removed lines weighted by 0.5); both with LoRA, learning rate 1e-4 and
-10 epochs. These localization arguments were added to PEFT4CC's `util.py` in commit `ae42f8b` (pinned by
-`make setup-rq1`). In the original runs, a single tokenized-labels cache (`changes_complete_buggy_line_level_cache.pkl`,
+10 epochs. These localization arguments were added to PEFT4CC's `util.py` in commit `ae42f8b`; commit `7cc60e6` (pinned by
+`make setup-rq1`) also loads the models with eager attention (with recent `transformers` versions, UniXCoder returns
+no attention weights otherwise, and all localization metrics are NaN) and fixes a NumPy 2 incompatibility. In the original runs, a single tokenized-labels cache (`changes_complete_buggy_line_level_cache.pkl`,
 created on 2025-09-14) was shared by both models; it was built with the CodeT5+ tokenizer, so the UniXCoder runs
 matched UniXCoder's attention tokens against CodeT5+ tokens (identical for most tokens, but not for identifiers the
 two vocabularies split differently). `make rq2-attention` builds one cache per run with the model's own tokenizer, so

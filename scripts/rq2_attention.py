@@ -1,7 +1,7 @@
 """RQ2 - Attention-based JIT-DL baselines CodeT5+ and UniXCoder (Section 4.3.2, Table 5).
 
 For each seed, the model is fine-tuned with LoRA on the JIT-Defects4J split with PEFT4CC
-(deps/PEFT4CC @ ae42f8b, see scripts/setup_rq1.sh) and then tested; the lines of each true-positive commit
+(deps/PEFT4CC @ 7cc60e6, see scripts/setup_rq1.sh) and then tested; the lines of each true-positive commit
 are ranked by attention and the line-level metrics are averaged over those commits. The arguments are those
 of the "Best results" (CodeT5+) and "Normalizacao por comprimento de linha (Best execution)" (UniXCoder)
 cells of the original notebook (JIT-DL.ipynb). One row per seed is written to
@@ -60,7 +60,7 @@ def command(args, seed, run_dir, train):
         "--do_train" if train else "--do_test", "--use_lora", "--calculate_metrics",
         "--buggy_line_filepath", os.path.join(run_dir, LABELS), *extra,
     ]
-    # In PEFT4CC @ ae42f8b the localization metrics are only computed with --do_locate_defects.
+    # In PEFT4CC (ae42f8b and later) the localization metrics are only computed with --do_locate_defects.
     return cmd if train else cmd + ["--do_locate_defects"]
 
 

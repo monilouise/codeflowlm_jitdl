@@ -20,7 +20,8 @@ clone_pinned() {
 }
 
 clone_pinned https://github.com/monilouise/codeflowlm.git codeflowlm 2b86a06
-# ae42f8b = c86785b + the line-localization arguments of util.py (--only_adds True/False, --loc_*) used by RQ2
-clone_pinned https://github.com/monilouise/PEFT4CC.git PEFT4CC ae42f8b
+# 7cc60e6 = c86785b + the line-localization arguments of util.py (--only_adds True/False, --loc_*) used by RQ2 (ae42f8b)
+# + eager attention (needed to get attention weights from UniXCoder with recent transformers) and a NumPy 2 fix
+clone_pinned https://github.com/monilouise/PEFT4CC.git PEFT4CC 7cc60e6
 
 pip install -r "$ROOT/envs/requirements-rq1-codeflowlm.txt"
