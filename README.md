@@ -72,27 +72,28 @@ The original Colab notebooks are still available:
 | JIT-SmartATTN baseline, 5 seeds ([baselines/JIT-Smart](baselines/JIT-Smart), changes listed in its README) | `make rq2-jitsmart` | GPU (about 5 h per seed on Colab), PyTorch, `transformers` | `results/rq2/baselines/JIT-SmartATTN.csv` |
 | JIT-Fine baseline, 5 seeds ([baselines/JIT-Fine](baselines/JIT-Fine), changes listed in its README) | `make rq2-jitfine` | GPU (several hours per seed on Colab), PyTorch, `transformers` | `results/rq2/baselines/JIT-Fine.csv` |
 
-The published values of Table 5 are in `results/rq2/paper/table5.csv`.
-`results/rq2/baselines/JIT-SmartATTN.csv` contains the five JIT-SmartATTN runs reported in the paper
-(seeds 33, 23, 99, 72 and 22, trained on Google Colab); `make rq2` adds them to Table 5.
-`results/rq2/baselines/JIT-Fine.csv` contains the JIT-Fine runs reported in the paper (seeds 33, 23 and 99, Colab, November 2025)
-and seeds 72 (trained in November 2025, tested in November 2026) and 22 (trained and tested in November 2026), all in the
-same notebook; the November 2026 steps ran on the Colab runtime of that time, with changes 5 and 6 of
-[baselines/JIT-Fine/README.md](baselines/JIT-Fine/README.md).
-`results/rq2/baselines/CodeT5+-LoRA.csv` and `UniXCoder-LoRA.csv` contain the runs of the original notebook
-(Google Colab, November 2025); the UniXCoder run with seed 33 is not in it, so that file has seeds 23, 99, 72 and 22.
-`make rq2-attention` uses the arguments of those runs: CodeT5+ with batch size 8, `--hidden_size 1024`,
+The published values of Table 5 are in `results/rq2/paper/table5.csv`. The baseline rows are the mean and standard
+deviation of five runs (seeds 33, 23, 99, 72 and 22), stored one row per seed in `results/rq2/baselines/`;
+`make rq2` adds them to Table 5 and reproduces the published values of every baseline row:
+- `JIT-SmartATTN.csv`: the five JIT-SmartATTN runs, trained on Google Colab.
+- `JIT-Fine.csv`: seeds 33, 23 and 99 (Colab, November 2025), 72 (trained in November 2025, tested in November 2026)
+  and 22 (trained and tested in November 2026), all in the same notebook; the November 2026 steps ran on the Colab
+  runtime of that time, with changes 5 and 6 of [baselines/JIT-Fine/README.md](baselines/JIT-Fine/README.md).
+- `CodeT5+-LoRA.csv`: the runs of the original notebook (Google Colab, November 2025).
+- `UniXCoder-LoRA.csv`: the runs of `python scripts/rq2_attention.py --config UniXCoder-LoRA` (Google Colab,
+  November 2026).
+
+`make rq2-attention` uses the arguments of the original notebook: CodeT5+ with batch size 8, `--hidden_size 1024`,
 `--loc_last_k_layers 3 --loc_attn_temp 0.85` (only added lines); UniXCoder with batch size 16,
 `--only_adds False --loc_deleted_weight 0.5` (removed lines weighted by 0.5); both with LoRA, learning rate 1e-4 and
-10 epochs. These localization arguments were added to PEFT4CC's `util.py` in commit `ae42f8b`; commit `7cc60e6` (pinned by
-`make setup-rq1`) also loads the models with eager attention (with recent `transformers` versions, UniXCoder returns
-no attention weights otherwise, and all localization metrics are NaN) and fixes a NumPy 2 incompatibility. In the original runs, a single tokenized-labels cache (`changes_complete_buggy_line_level_cache.pkl`,
-created on 2025-09-14) was shared by both models; it was built with the CodeT5+ tokenizer, so the UniXCoder runs
-matched UniXCoder's attention tokens against CodeT5+ tokens (identical for most tokens, but not for identifiers the
-two vocabularies split differently). `make rq2-attention` builds one cache per run with the model's own tokenizer, so
-its UniXCoder results replace the ones currently in `UniXCoder-LoRA.csv` (original setting). To reproduce the original
-UniXCoder setting instead, pass a CodeT5+ cache with `--labels-cache`
-(e.g. `results/rq2/work/CodeT5+-LoRA/seed33/changes_complete_buggy_line_level_cache.pkl`).
+10 epochs. These localization arguments were added to PEFT4CC's `util.py` in commit `ae42f8b`; commit `7cc60e6`
+(pinned by `make setup-rq1`) also loads the models with eager attention (with recent `transformers` versions, UniXCoder
+returns no attention weights otherwise, and all localization metrics are NaN) and fixes a NumPy 2 incompatibility.
+Each run uses its own tokenized-labels cache (`changes_complete_buggy_line_level_cache.pkl`), built with the model's
+own tokenizer. In the original notebook, a single cache built with the CodeT5+ tokenizer was shared by both models, so
+the UniXCoder runs of the previous version of the paper matched UniXCoder's attention tokens against CodeT5+ tokens;
+the UniXCoder row of Table 5 was recomputed for this reason. That setting can still be reproduced by passing a CodeT5+
+cache with `--labels-cache` (e.g. `results/rq2/work/CodeT5+-LoRA/seed33/changes_complete_buggy_line_level_cache.pkl`).
 
 The LLMs receive the prompt of Listing 1 ([jit-dl-llms/prompt_listing1.txt](jit-dl-llms/prompt_listing1.txt), kept
 verbatim) followed by the diff of each of the 221 commits correctly predicted as defect-inducing by CodeT5+
