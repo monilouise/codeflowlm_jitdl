@@ -1,0 +1,5 @@
+model,config,run,top5,top10,recall20,effort20,ifa
+UniXCoder,UniXCoder-LoRA,22,0.5048,0.6442,0.2685,0.2665,13.8702
+UniXCoder,UniXCoder-LoRA,23,0.5164,0.6639,0.2988,0.2660,12.9098
+UniXCoder,UniXCoder-LoRA,72,0.5294,0.6471,0.2623,0.2770,13.2127
+UniXCoder,UniXCoder-LoRA,99,0.5258,0.6714,0.2783,0.2730,13.1362
