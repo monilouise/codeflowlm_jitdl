@@ -124,6 +124,8 @@ Notes:
   Effort@20% of every model (Top-10 within 0.001); the mean IFA is up to 0.05 lower, because of the tie order of
   commit `94faa31` (commons-lang, 312 changed lines, 308 of them with score 0).
 
+### RQ3: JIT-DL Error Analysis
+
 #### False-positives analysis
 
 - Prompt: "I am attaching a .json file containing a list of false positives, i.e., lines classified as defective when they are actually non-defective. Analyze the file and return a list of the most common types of false positives, explicitly indicating the corresponding JSON excerpts and their respective projects."
