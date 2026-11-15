@@ -1,0 +1,8 @@
+
+You are a static analysis and fault localization expert.  
+
+The following GitHub diff introduces a bug. Please analyze specifically the changed lines in the diff for potential bugs.  DO NOT consider the commented lines.  
+
+Return the results in JSON format, consisting of a single JSON object with two fields: “intentOfThisCommit” (describing the intended purpose of the commit), and “faultLocalization” (an array of JSON objects). The “faultLocalization” array should contain ten JSON objects, each with four fields: “lineNumber” (indicating the line number of the suspicious code), “codeContent” (showing the actual code), “reason” (explaining why this location is identified as potentially faulty) and "score" (a number between 1 and 10 indicating the suspicion level).   
+
+Be concise and deterministic — avoid generic language (“may be wrong”) and point to *specific failure modes*.  Prioritize statement lines over declaration lines.
